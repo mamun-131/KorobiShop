@@ -1,0 +1,258 @@
+<mat-toolbar-row fxHide fxShow.gt-sm class="container" fxLayout="row"  fxLayout.xs="row" fxLayoutAlign="space-between center">
+  <div class="main-menu" fxLayout="row" fxHide fxShow.gt-sm>
+    <a mat-button class="mat-button" [matMenuTriggerFor]="korobi">করবী  <mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #korobi="matMenu" [overlapTrigger]="false" class="app-dropdown">
+      <a mat-menu-item [routerLink]="['/home/one']" routerLinkActive="router-link-active" >Home-1</a>
+      <a mat-menu-item [routerLink]="['/home/two']" routerLinkActive="router-link-active">Home-2</a>
+      <a mat-menu-item [routerLink]="['/home/three']" routerLinkActive="router-link-active">Home-3</a>
+      <a mat-menu-item [routerLink]="['/home/four']" routerLinkActive="router-link-active">Home-4</a>
+      <a mat-menu-item [routerLink]="['/home/five']" routerLinkActive="router-link-active">Home-5</a>
+  </mat-menu>
+    <!--<a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active"  mat-button class="mat-button">Products</a>-->
+    <a mat-button [matMenuTriggerFor]="boi" class="mat-button" (click)="openMegaMenu()">বই<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #boi="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+      <div fxLayout="row wrap">
+        <div fxFlex="auto" fxLayout="column" class="p-1">
+          <a mat-menu-item routerLink="/"><b>বিশেষ ছাড়</b></a>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxFlex="auto" fxLayout="column" class="p-1">
+          <a [matMenuTriggerFor]="bishoi" mat-menu-item routerLink="/"><b>বিষয়</b></a>
+          <mat-menu #bishoi="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+            <mat-divider></mat-divider>
+
+            <a mat-menu-item routerLink ="/">
+              ছোটদের বই</a>
+              <a mat-menu-item routerLink ="/">
+                English Fiction</a>
+                <a mat-menu-item routerLink ="/">
+                  English Nonfiction</a>
+                  <a mat-menu-item routerLink ="/">
+                    Bangla Fiction</a>
+                    <a mat-menu-item routerLink ="/">
+                      Bangla Nonfiction</a>
+                      <a mat-menu-item routerLink ="/">
+                        অনুবাদ</a>
+                        <a mat-menu-item routerLink ="/">
+                          অভিধান</a>
+                          <a mat-menu-item routerLink ="/">
+                            মেডিকেল বুক</a>
+
+                            <a mat-menu-item routerLink ="/">
+                              আইন বই</a>
+                              <a mat-menu-item routerLink ="/">
+                                English Proficiency</a>
+                                <a mat-menu-item routerLink ="/">
+                                  বাংলায় ইঞ্জিনিয়ারিং</a>
+                                  <a mat-menu-item routerLink ="/">
+                                    ইসলামিক বই</a>
+                                    <a mat-menu-item routerLink ="/">
+                                      সফটওয়্যার ইঞ্জিনিয়ারিং</a>
+                                      <a mat-menu-item routerLink ="/">
+                                        বিবিএ</a>
+                                        <a mat-menu-item routerLink ="/">
+                                          এমবিএ</a>
+                                          <a mat-menu-item routerLink ="/">
+                                            ইতিহাস</a>
+                                            <a mat-menu-item routerLink ="/">
+                                              রান্না ও খাদ্য পুষ্টি</a>
+                                              <a mat-menu-item routerLink ="/">
+                                                জীবনী</a>
+                                                <a mat-menu-item routerLink ="/">
+                                                  গণমাধ্যম ও সাংবাদিকতা</a>
+                                                  <a mat-menu-item routerLink ="/">
+                                                    মুক্তিযুদ্ধ</a>
+                                                    <a mat-menu-item routerLink ="/">
+                                                      গণিত</a>
+                                                      <a mat-menu-item routerLink ="/">
+                                                        খেলাধুলা</a>
+                                                        <a mat-menu-item routerLink ="/">
+                                                          শিক্ষা ও গবেষণা</a>
+                                                          <a mat-menu-item routerLink ="/">
+                                                            ভর্তি, নিয়োগ ও পরীক্ষা প্রস্তুতি</a>
+                                                            <a mat-menu-item routerLink ="/">
+                                                              আত্মউন্নয়ন, মোটিভেশনাল</a>
+
+          </mat-menu>
+
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a [matMenuTriggerFor]="lekhok" mat-menu-item routerLink="/"><b>লেখক</b></a>
+          <mat-menu #lekhok="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+            <mat-divider></mat-divider>
+            <button mat-menu-item>হুমায়ুন আহমেদ</button>
+            <button mat-menu-item>মুহম্মদ জাফর ইকবাল</button>
+            <button mat-menu-item>সৈয়দ শামসুল হক</button>
+            <button mat-menu-item>জহির রায়হান</button>
+            <button mat-menu-item>সমরেশ মজুমদার</button>
+          </mat-menu>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a [matMenuTriggerFor]="prokashoni" mat-menu-item routerLink="/"><b>প্রকাশনী</b></a>
+          <mat-menu #prokashoni="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+            <button mat-menu-item>অন্যপ্রকাশ</button>
+            <button mat-menu-item>বাংলা একাডেমি</button>
+            <button mat-menu-item>বাতিঘর প্রকাশনী</button>
+            <button mat-menu-item>ইসলামিক ফাউন্ডেশন</button>
+          </mat-menu>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a mat-menu-item routerLink="/"><b>প্যাকেজ</b></a>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a mat-menu-item routerLink="/"><b>জনপ্রিয় বই</b></a>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a mat-menu-item routerLink="/"><b>নতুন প্রকাশিত বই</b></a>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a mat-menu-item routerLink="/"><b>প্রি- অর্ডার বই</b></a>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxFlex="auto" class="p-1">
+          <a mat-menu-item routerLink="/"><b>পুরনো বই</b></a>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+
+    </mat-menu>
+    <a mat-button  [matMenuTriggerFor]="blog" class="mat-button">স্টেশনারি<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #blog="matMenu" [overlapTrigger]="false" class="app-dropdown">
+      <a mat-menu-item [routerLink]="['/blog/blog-list']">বিশেষ ছাড়</a>
+      <a mat-menu-item [routerLink]="['/blog/blog-column']">নতুন স্টেশনারি</a>
+      <a mat-menu-item  [matMenuTriggerFor]="peper" [routerLink]="['/blog/blog-details']">পেপার, খাতা, নোটবুক & ডাইরি</a>
+      <mat-menu #peper="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>পেপার</button>
+        <button mat-menu-item>খাতা</button>
+        <button mat-menu-item>নোটবুক</button>
+        <button mat-menu-item>ডাইরি</button>
+        <button mat-menu-item>Filtering by product category</button>
+      </mat-menu>
+      <a mat-menu-item [routerLink]="['/blog/blog-details']">লেখার উপকরণ</a>
+      <a mat-menu-item [routerLink]="['/blog/blog-details']">শিক্ষা উপকরণ</a>
+      <a mat-menu-item [routerLink]="['/blog/blog-details']">অফিস সামগ্রী</a>
+      <a mat-menu-item [routerLink]="['/blog/blog-details']">ডেক্স অর্গানাইজার</a>
+      <a mat-menu-item [routerLink]="['/blog/blog-details']">ফাইলস ও ফোল্ডার </a>
+
+
+    </mat-menu>
+    <a mat-button [matMenuTriggerFor]="pages" class="mat-button">আর্ট & ক্রাফট<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #pages="matMenu" [overlapTrigger]="false" class="app-dropdown">
+      <a [routerLink]="['/pages/about']" mat-menu-item>বিশেষ ছাড়</a>
+      <a mat-menu-item [routerLink]="['/pages/faq']">নতুন ক্রাফট</a>
+      <a mat-menu-item [matMenuTriggerFor]="peper1" [routerLink]="['/pages/contact']">পেপার</a>
+      <mat-menu #peper1="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>গিফট কার্ড</button>
+        <button mat-menu-item>হ্যান্ডমেইড ডাইরি</button>
+        <button mat-menu-item>বুক মার্ক</button>
+        <button mat-menu-item>গিফট বক্স</button>
+        <button mat-menu-item>টিস্যু বক্স</button>
+      </mat-menu>
+
+      <a mat-menu-item [matMenuTriggerFor]="katherponno" [routerLink]="['/pages/wishlist']">কাঠের পণ্য</a>
+      <mat-menu #katherponno="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>ডাইরি</button>
+        <button mat-menu-item>গিফট বক্স</button>
+        <button mat-menu-item>নেইম প্লেট</button>
+        <button mat-menu-item>টিস্যু বক্স</button>
+        <button mat-menu-item>গহনার বক্স</button>
+        <button mat-menu-item>ফ্রেম</button>
+        <button mat-menu-item>চাবির রিং</button>
+      </mat-menu>
+      <a mat-menu-item [routerLink]="['/pages/compare']">সিরামিক</a>
+      <a mat-menu-item [matMenuTriggerFor]="matirtoiri" [routerLink]="['/pages/checkout']">মাটির তৈরি</a>
+      <mat-menu #matirtoiri="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>ফুলদানি</button>
+        <button mat-menu-item>টি সেট</button>
+        <button mat-menu-item>ওয়াল হেঙ্গিং</button>
+      </mat-menu>
+      <a mat-menu-item [routerLink]="['/pages/cart']">কাঠের গহনা</a>
+      <a mat-menu-item [routerLink]="['/pages/my-account']">ক্যান্ডেল</a>
+      <a mat-menu-item [matMenuTriggerFor]="pootirponno" [routerLink]="['/pages/my-account']">পুঁতির পণ্য </a>
+      <mat-menu #pootirponno="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>ব্যাগ</button>
+        <button mat-menu-item>টিস্যু বক্স</button>
+        <button mat-menu-item>ডর বেল</button>
+        <button mat-menu-item>ওয়াল হেঙ্গিং</button>
+      </mat-menu>
+      <a mat-menu-item [matMenuTriggerFor]="chamrajatponno" [routerLink]="['/pages/my-account']">চামড়াজাত পণ্য</a>
+      <mat-menu #chamrajatponno="matMenu" [overlapTrigger]="false" class="app-dropdown mega-menu">
+        <mat-divider></mat-divider>
+        <button mat-menu-item>ব্যাগ</button>
+        <button mat-menu-item>ব্যােল্ট</button>
+        <button mat-menu-item>চাবির রিং</button>
+      </mat-menu>
+      
+
+      
+      
+      <a mat-menu-item [routerLink]="['/pages/error']">404</a>
+    </mat-menu>
+    <a mat-button [matMenuTriggerFor]="pratishthanikorder" class="mat-button">প্রাতিষ্ঠানিক অর্ডার<mat-icon class="caret">arrow_drop_down</mat-icon></a>
+    <mat-menu #pratishthanikorder="matMenu" [overlapTrigger]="false" class="app-dropdown">
+      <a mat-menu-item [routerLink]="['/pages/faq']">কনফারেন্স</a>
+      <a mat-menu-item [routerLink]="['/pages/contact']">সেমিনার</a>
+      <a mat-menu-item [routerLink]="['/pages/wishlist']">প্রিন্টিং</a>
+    </mat-menu>
+  </div>
+    <!-- <app-shopping-widgets *ngIf="url == '/home/one'" [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets> -->
+    <!-- <div class="main-menu-wrapper" fxLayout="row" fxLayoutAlign="space-between center" >
+
+        <div class="commerce-buttons" fxLayout="row" fxLayoutAlign="end center">
+
+          <button mat-button class="flex-row-button mat-button" fxLayoutAlign="space-between center" [matMenuTriggerFor]="menu">
+            <div class="mat-button-wrapper">
+                <div class="" >
+                    <mat-icon class="mat-icon-lg mat-icon material-icons">local_grocery_store</mat-icon>
+                    <span class="cart-count-wrapper">{{shoppingCartItems.length}}</span>
+                  </div>
+                  <div class="top-cart">
+                      <span>{{ getTotal() | async | currency:productsService?.currency:'symbol'}}</span>
+                  </div>
+            </div>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="spCard-dropdown">
+              <div class="card-list-title" fxLayout="row" fxLayoutAlign="space-between start">
+                 <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><p>CHECK CARD</p></a>
+                  <p>{{shoppingCartItems.length}} ITEM</p>
+              </div>
+                  <mat-divider></mat-divider>
+                  <p class="woo-message" *ngIf="!shoppingCartItems.length">Please add product<p>
+
+                  <div class="new-product" fxLayout="column" *ngIf="shoppingCartItems.length">
+                    <div class="item" fxLayout="row" fxLayoutAlign="start start" *ngFor="let item of shoppingCartItems">
+                        <div class="product">
+                            <img [src]="item.product.pictures" alt="">
+                           </div>
+                          <div class="desc">
+                            <p>{{item.product.name}}</p>
+                            <span>{{item.quantity}} X {{item.product.price}}</span>
+                           </div>
+                           <div class="close-circle">
+                              <a (click)="removeItem(item)"><i class="material-icons">
+                                  delete
+                                  </i></a>
+                            </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="total" fxLayout="row" fxLayoutAlign="space-between center">
+                        <p class="text-muted">Subtotal: </p>
+                        <span>{{ getTotal() | async | currency:productsService?.currency:'symbol' }}</span>
+                      </div>
+                  </div>
+            </div>
+       </mat-menu>
+        </div>
+
+      </div> -->
+</mat-toolbar-row>
+
