@@ -2187,60 +2187,207 @@ line-height: 23px;
 .home-header-three {
   background: $white;
   border-top: 1px solid $baners-background;
-.logo {
-    padding: 25px 0;
-}
+
+  .logo {
+    padding: 10px 50px;
+  }
+
   .search-form {
     width: 80%;
     margin: 0 auto;
     /* margin-top: 6px; */
     padding: 13px 0;
+
     .form-wrap {
+      border-style: none;
+      border-width: 1px;
+      border-radius: 15px;
+      /*border: 1px solid $theme-main;*/
       background-color: transparent;
       white-space: nowrap;
       zoom: 1;
       width: 100%;
       margin: 0;
       position: relative;
-      background: #444;
-      background: rgba(0, 0, 0, 0.2);
-      input {
+      /*background: $theme-main;*/
+      background: lavender;
+
+      .btn-search1 {
+        overflow: visible;
+        position: absolute;
         border-style: none;
         border-width: 1px;
-        border-radius: 3px;
-        border: 2px solid $theme-main;
+        /*border-radius: 15px;*/
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        border: 1px solid $theme-main;
+        margin: 0;
+        cursor: pointer;
+        height: 40px;
+        min-width: 110px;
+        left: -110px;
+        top: 0;
+        padding: 0px;
+        color: #333;
+        transition: all 250ms ease-in-out;
+        text-transform: uppercase;
+        text-align-last: center;
+        /*background-color: $theme-main;*/
+        background-color: transparent;
+        /*border-radius: 0 3px 3px 0;*/
+        -webkit-bottom-left-radius: 15px;
+        -webkit-top-left-radius: 15px;
+        /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);*/
+        box-shadow: none;
+        -webkit-appearance: none;
+      }
+
+      .input {
+        border-style: none;
+        border-width: 1px;
+        /*border-radius: 0px;*/
+        border: 1px solid $theme-main;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
         transition: box-shadow 0.3s ease-out;
         height: 40px;
         width: 100%;
         max-width: 100%;
-        padding: 0 0 0 12px;
-        float: left;
+        padding: 0 0 0 5px;
+        /*float: left;*/
+        position: sticky;
+        right: 0px;
         outline: none;
         box-shadow: none;
+      }
+
+
+      .btn-search {
+        overflow: visible;
+        position: absolute;
+        border-style: none;
+        border-width: 1px;
+        border-radius: 15px;
+        border: 1px solid transparent;
+        margin: 0;
+        cursor: pointer;
+        height: 100%;
+        min-width: 50px;
+        right: 0px;
+        top: 0;
+        padding: 0 5px;
+        color: #333;
+        transition: all 250ms ease-in-out;
+        text-transform: uppercase;
+        /*background-color: $theme-main;*/
+        background-color: transparent;
+        /*border-radius: 0 3px 3px 0;*/
+        -webkit-border-radius: 15px;
+        /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);*/
+        box-shadow: none;
+        -webkit-appearance: none;
+      }
+
+
+      .input-m {
+        border-style: none;
+        border-width: 1px;
+        /*border-radius: 0px;*/
+        border: 1px solid $theme-main;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        transition: box-shadow 0.3s ease-out;
+        height: 40px;
+        width: 80%;
+        max-width: 100%;
+        padding: 0 0 0 5px;
+        /*float: left;*/
+        left:30%;
+        position: sticky;
+        right: 0px;
+        outline: none;
+        box-shadow: none;
+      }
+
+
+      .btn-search1-m {
+        overflow: visible;
+        position: absolute;
+        border-style: none;
+        border-width: 1px;
+        /*border-radius: 15px;*/
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        border: 1px solid $theme-main;
+        margin: 0;
+        cursor: pointer;
+        height: 40px;
+        min-width: 20%;
+        left: 0px;
+        top: 0;
+        padding: 0px;
+        color: #333;
+        transition: all 250ms ease-in-out;
+        text-transform: uppercase;
+        text-align-last: center;
+        /*background-color: $theme-main;*/
+        background-color: transparent;
+        /*border-radius: 0 3px 3px 0;*/
+        -webkit-bottom-left-radius: 15px;
+        -webkit-top-left-radius: 15px;
+        /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);*/
+        box-shadow: none;
+        -webkit-appearance: none;
+      }
+
+      .btn-search-m {
+        overflow: visible;
+        position: absolute;
+        border-style: none;
+        border-width: 1px;
+        border-radius: 15px;
+        border: 1px solid transparent;
+        margin: 0;
+        cursor: pointer;
+        height: 100%;
+        min-width: 50px;
+        right: 0px;
+        top: 0;
+        padding: 0 5px;
+        color: #333;
+        transition: all 250ms ease-in-out;
+        text-transform: uppercase;
+        /*background-color: $theme-main;*/
+        background-color: transparent;
+        /*border-radius: 0 3px 3px 0;*/
+        -webkit-border-radius: 15px;
+        /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);*/
+        box-shadow: none;
+        -webkit-appearance: none;
+      }
     }
-    .btn-search {
-      overflow: visible;
-      position: absolute;
-      border: 0;
-      margin: 0;
-      cursor: pointer;
-      height: 100%;
-      min-width: 50px;
-      right: -15px;
-      top: 0;
-      padding: 0 35px;
-      color: #333;
-      transition: all 250ms ease-in-out;
-      text-transform: uppercase;
-      background-color: $theme-main;
-      border-radius: 0 3px 3px 0;
-      -webkit-border-radius: 0 3px 3px 0;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-      box-shadow: none;
-      -webkit-appearance: none;
   }
-    }
+
+
+  .example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
   }
+
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+  }
+
+  .example-large-box {
+    height: 300px;
+    width: 300px;
+  }
+
   .call-bucket-wrap {
     .info-message-icon {
       .icon {
@@ -2251,34 +2398,40 @@ line-height: 23px;
           float: left;
           height: 49px;
           margin: 0 16px 0 0;
+        }
       }
-      }
+
       .info-text {
         p {
           font-size: 12px;
           line-height: 0px;
           margin-bottom: 7px;
         }
+
         span {
           font-size: 20px;
           font-weight: 600;
         }
       }
     }
-  .main-menu-wrapper-3 {
+
+    .main-menu-wrapper-3 {
 
       .top-navbar {
         background: #ffffff;
+
         .flex-row-button {
           .mat-button-wrapper {
             display: flex;
-          flex-direction: row;
-          align-items: center;
-          .top-cart {
-            span {
-              font-size: 15px;
-          }
-          }
+            flex-direction: row;
+            align-items: center;
+
+            .top-cart {
+              span {
+                font-size: 15px;
+              }
+            }
+
             .cart-count-wrapper {
               position: absolute;
               top: -10px;
@@ -2289,15 +2442,12 @@ line-height: 23px;
               line-height: 18px;
               border-radius: 50%;
               font-size: 11px;
-          }
+            }
           }
         }
       }
-
-
+    }
   }
-  }
-
 }
 
 .menu-container4 {
@@ -2315,6 +2465,15 @@ line-height: 23px;
     }
 }
 }
+
+.menutab-toolbar {
+  overflow:auto;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  /*  z-index: 1000;  Ensure that your app's content doesn't overlap the toolbar */
+}
+
 
 .topbar_four {
   background: $baners-background;
@@ -4796,4 +4955,27 @@ margin: 10px 0;
   .routeIcon {
     margin-right: 40px;
   }
+}
+
+.mataccordion {
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+
+.matexpansionpanel {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-color:transparent;
+}
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size:large;
 }

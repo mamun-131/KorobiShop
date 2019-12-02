@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -31,7 +32,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 //import { BannersComponent } from './banners/banners.component';
 //import { HeaderTwoComponent } from './header-two/header-two.component';
-//import { ShoppingWidgetsComponent } from './shopping-widgets/shopping-widgets.component';
+import { ShoppingWidgetsComponent } from './shopping-widgets/shopping-widgets.component';
 import { HeaderThreeComponent } from './header-three/header-three.component';
 //import { BannersFourComponent } from './banners-four/banners-four.component';
 //import { BlogSectionComponent } from './blog-section/blog-section.component';
@@ -52,7 +53,7 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
         //OrderByPipe,
         //BannersComponent,
         //HeaderTwoComponent,
-        //ShoppingWidgetsComponent,
+        ShoppingWidgetsComponent,
         HeaderThreeComponent,
         //BannersFourComponent,
         //BlogSectionComponent,
@@ -65,6 +66,7 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
     imports: [
         CommonModule,
         RouterModule,
+        MatGridListModule,
         MatButtonModule,
         MatSnackBarModule,
         MatToolbarModule,
@@ -87,6 +89,7 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
     ],
     exports: [
         CommonModule,
+        MatGridListModule,
         MatButtonModule,
         MatSnackBarModule,
         MatToolbarModule,
@@ -116,7 +119,7 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
         //HeaderTwoComponent,
         HeaderThreeComponent,
         //HeaderFourComponent,
-        //ShoppingWidgetsComponent,
+        ShoppingWidgetsComponent,
         //BannersFourComponent,
         //BlogSectionComponent,
         //BannerPromotionComponent,

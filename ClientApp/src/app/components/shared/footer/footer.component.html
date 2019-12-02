@@ -1,78 +1,251 @@
+
+
 <footer class="footer sec-padding">
   <div class="container">
-      <div class="footer-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.sm="50" class="footer-widget about-widget"><a class="logo" href="index.html"><img src="assets//images/logo-02-01.png" alt="Awesome Image"></a>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean malesuada fringilla sem, at dictum lectus ultricies quis. Etiam eu bibendum orci. Aliquam erat volutpat.</p>
-          <div class="link"><a href="#">MORE ABOUT US</a> </div>
-        </div>
-
-          <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
-            <div class="title">
-              <h5>Services</h5>
-            </div>
-            <div class="row">
-                <ul>
-                  <li><a href="#">Hotel Growth</a></li>
-                  <li><a href="#">Hotel Loan</a></li>
-                  <li><a href="#">Financial Planning</a></li>
-                  <li><a href="#">Insurance Consulting</a></li>
-                  <li><a href="#">Retirenment Planing</a></li>
-                  <li><a href="#">Tax Planing</a></li>
-                </ul>
-            </div>
-          </div>
+    <div class="footer-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between start">
+      <div fxFlex="100" fxFlex.gt-sm="15" fxFlex.sm="50" class="footer-widget about-widget">
+        <a class="logo" href="index.html"><img src="assets//images/logo-02-01.png" alt="Awesome Image"></a>
+        <p>করবী একটি আধুনিক এবং মান সম্পন্ন বই এবং ক্র্যাফট এর দোকান যেখানে উন্নত মানের প্রোডাক্ট বিক্রয় হয়. আমাদের পণ্য অনলাইন এ ও অর্ডার দেওয়া যাই</p>
+        <div class="link"><a mat-stroked-button href="#">আমাদের সম্পর্কে বিস্তারিত...</a> </div>
+      </div>
 
 
-        <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
-          <div class="title">
-            <h5>Subscribe Newsletter</h5>
-          </div>
-          <form action="#">
-            <p>Get latest updates and offers.</p>
-            <div fxLayout="column" class="newsletter-widget">
-              <input type="text" placeholder="Enter your email address">
-              <button type="submit" class="ped-btn-footer">SUBSCRIBE US</button>
-            </div>
-          </form>
-        </div>
 
 
-          <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
-            <div class="title">
-              <h5>Contact Us</h5>
-            </div>
-            <div fxLayout="row" class="tel-box">
-              <div class="icon"><i class="fa fa-map-marker"></i></div>
-              <div class="text">
-                <p>Apple St, New York, NY 10012, USA</p>
+      <mat-accordion class="mataccordion" fxHide="false" fxHide.gt-sm>
+        <mat-expansion-panel class="matexpansionpanel">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title">
+                <h5>Customer Care</h5>
               </div>
-            </div>
-            <div fxLayout="row" class="tel-box">
-              <div class="icon"><i class="fa fa-phone"></i></div>
-              <div class="text">
-                <p>( 018) 65 524 8503  /  (125) 954 7854</p>
-              </div>
-            </div>
-            <div fxLayout="row" class="tel-box">
-              <div class="icon"><i class="fa fa-envelope"></i></div>
-              <div class="text">
-                <p><a href="#">contact@lamarena.com</a></p>
-              </div>
-            </div>
+            </mat-panel-title>
+            <!--<mat-panel-description>
+        Type your name and age
+      </mat-panel-description>-->
+          </mat-expansion-panel-header>
 
-            <ul fxLayout="row" class="social list-inline">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          <div class="row">
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">How to Buy</a></li>
+              <li><a href="#">Track Your Order</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
+              <li><a href="#">Contact Us</a></li>
             </ul>
           </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matexpansionpanel" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              <div class="title">
+                <h5>Korobi</h5>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li><a href="#">About Korobi</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Korobi Blog</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matexpansionpanel" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title">
+                <h5>Address</h5>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">How to Buy</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Our Partner</a></li>
+          </ul>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="matexpansionpanel" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title">
+                <h5>Payment</h5>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li><a href="#">Replacement Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Suggestion / Complaint</a></li>
+          </ul>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="matexpansionpanel" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title">
+                <h5>Payment Options</h5>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li><a href="#">Rocket</a></li>
+            <li><a href="#">bkash</a></li>
+            <li><a href="#">nogod</a></li>
+            <li><a href="#">DBBL nexus</a></li>
+            <li><a href="#">Master</a></li>
+            <li><a href="#">Visa</a></li>
+          </ul>
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel class="matexpansionpanel" (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="title">
+                <h5>Social Media</h5>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul fxLayout="row" class="social list-inline" fxLayoutAlign="space-between center">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+     
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+        </mat-expansion-panel>
+
+      </mat-accordion>
 
 
 
 
 
-
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Customer Care</h5>
+        </div>
+        <div class="row">
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">How to Buy</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
+
+
+
+
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Korobi</h5>
+        </div>
+        <div class="row">
+          <ul>
+            <li><a href="#">About Korobi</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Korobi Blog</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Address</h5>
+        </div>
+        <div class="row">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">How to Buy</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Our Partner</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Payment</h5>
+        </div>
+        <div class="row">
+          <ul>
+            <li><a href="#">Replacement Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Suggestion / Complaint</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Payment Options</h5>
+        </div>
+        <div class="row">
+          <ul>
+            <li><a href="#">Rocket</a></li>
+            <li><a href="#">bkash</a></li>
+            <li><a href="#">nogod</a></li>
+            <li><a href="#">DBBL nexus</a></li>
+            <li><a href="#">Master</a></li>
+            <li><a href="#">Visa</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="13" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
+        <div class="title">
+          <h5>Social Media</h5>
+        </div>
+        <div class="row">
+
+
+          <ul fxLayout="row" class="social list-inline">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          </ul>
+          <ul fxLayout="row" class="social list-inline">
+
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+
+        </div>
+      </div>
+
+
+
+
+
+    </div>
   </div>
 </footer>

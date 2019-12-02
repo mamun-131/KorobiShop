@@ -1,37 +1,208 @@
 
-<div class="home-header-three">
-  <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
-    <div class="logo">
-        <a [routerLink]="['/home/one']" routerLinkActive="router-link-active" ><img src="assets/images/logo-01.png"></a>
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav [opened]="false" mode="over" #start class="sidenav">
+
+    <!--<button mat-icon-button color="warn" class="close" (click)="start.close()">
+      <mat-icon color="warn">close</mat-icon>
+    </button>
+
+    <div class="divider"></div>-->
+    <div class="sidebar-items" fxLayout="column">
+      <app-sidebar *ngFor="let item of navItems" [item]="item"></app-sidebar>
     </div>
-    <div fxflexoffset.gt-sm="10"  fxFlex class="search-form">
-        <form class="search-form" fxLayout="row">
-          <div class="form-wrap">
-             <input type="text" placeholder="Type to search...">
-             <button class="btn-search" type="submit">Search</button>
-          </div>
-        </form>
-       </div>
-    <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center" >
-        <!-- <div class="info-message-icon"  fxLayout="row" fxLayoutAlign="center center">
-          <div class="icon"  fxLayout="row" >
-              <mat-icon class="mat-icon-lg mat-icon material-icons">call</mat-icon>
-          </div>
-            <div class="info-text">
-              <p>Helpline:</p>
-               <span>02(981)336 111</span>
-            </div>
-        </div> -->
-        <div class="main-menu-wrapper-3" fxLayout="row" fxLayoutAlign="space-between center" >
-            <mat-toolbar class="top-navbar top menu">
-              <!--<app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>-->
-            </mat-toolbar>
-          </div>
+  </mat-sidenav>
+
+
+  <mat-toolbar class="main-topbar" [ngClass]="{topbar_four: url == '/home/four'}">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="end center" class="top-bar container">
+
+      <button mat-raised-button color="warn">Shop</button>
+
+      <!--<div fxLayout="row" class="welcome-message">
+        <div class="widget-text">
+          <a mat-button [matMenuTriggerFor]="currencyMenu" #currencyMenuTrigger="matMenuTrigger">
+            {{currency}}<mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+          </a>
+          <mat-menu #currencyMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+            <span>
+              <button mat-menu-item *ngFor="let cur of currencies" (click)="changeCurrency(cur)">
+                <span>{{cur}}</span>
+              </button>
+            </span>
+          </mat-menu>
+        </div>
+        <div class="widget-text">
+          <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
+            <img [src]="flag.image" width="18">
+            <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{flag.name}}</span>
+            <mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+          </a>
+          <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+            <span>
+              <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
+                <img [src]="flag.image" width="18"> {{flag.name}}
+              </button>
+            </span>
+          </mat-menu>
+        </div>
+      </div>-->
+
+
+
+
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+
+
+
+
+
+  <div class="home-header-three">
+
+
+    <span fxHide="false" fxHide.gt-sm fxLayout="row" fxLayoutGap="auto">
+      <div class="info-message-icon" fxLayout="column" fxLayoutAlign="center center">
+        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="center center">
+          <button mat-icon-button (click)="start.toggle()">
+            <mat-icon>menu</mat-icon>
+
+          </button>
+          <!-- <span><a class="button" (click)=" showSearch()"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></a></span>-->
+          <button *ngIf="!isSearchVisible" mat-button (click)="showSearch()">
+            <mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="!isSearchVisible" class="info-message-icon" fxLayout="column" fxLayoutAlign="center center">
+        <a [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img src="assets/images/logo-02-02.png"></a>
       </div>
 
-  </div>
-</div>
-<div class="menu-container4">
-    <app-menu></app-menu>
-</div>
 
+      <div *ngIf="isSearchVisible" fxflexoffset.gt-sm="10" fxFlex class="search-form">
+        <form class="search-form" fxLayout="row">
+
+
+
+          <div class="form-wrap">
+            <a class="btn-search1-m" [matMenuTriggerFor]="main_Menu" #currencyMenuTrigger="matMenuTrigger">
+              {{mainMenu}}<mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+            </a>
+            <mat-menu #main_Menu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+              <span>
+                <button mat-menu-item *ngFor="let main of mainMenus" (click)="changeMainMenu(main)">
+                  <span>{{main}}</span>
+                </button>
+              </span>
+            </mat-menu>
+            <input class="input-m" type="text" placeholder="Type to search...">
+            <button class="btn-search-m" type="submit" (click)="hideSearch"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="!isSearchVisible" class="info-message-icon" fxLayout="column" fxLayoutAlign="center center">
+        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="center center">
+
+          <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">favorite</mat-icon></a></span>
+
+          <app-shopping-widgets></app-shopping-widgets>
+          <!--<app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>-->
+          <span><a class="navbar-link" [routerLink]="['/counter']"><mat-icon class="mat-icon-lg mat-icon material-icons">account_circle</mat-icon></a></span>
+        </div>
+      </div>
+    </span>
+
+
+
+
+    <div class="container" fxHide fxShow.gt-sm fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
+      <div class="logo">
+        <a fxHide fxShow.gt-sm [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img src="assets/images/logo-01.png"></a>
+      </div>
+      <div fxflexoffset.gt-sm="10" fxFlex class="search-form">
+        <form class="search-form" fxLayout="row">
+
+          <div class="form-wrap" fxHide fxShow.gt-sm>
+            <a class="btn-search1" [matMenuTriggerFor]="main_Menu" #currencyMenuTrigger="matMenuTrigger">
+              {{mainMenu}}<mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+            </a>
+            <mat-menu #main_Menu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+              <span>
+                <button mat-menu-item *ngFor="let main of mainMenus" (click)="changeMainMenu(main)">
+                  <span>{{main}}</span>
+                </button>
+              </span>
+            </mat-menu>
+            <input class="input" type="text" placeholder="Type to search...">
+            <button class="btn-search" type="submit"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
+          </div>
+
+
+        </form>
+      </div>
+
+
+      <div fxLayoutAlign="center center" fxHide fxShow.gt-sm>
+        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between center">
+          <!--<button mat-mini-fab color="basic"> <span><app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets></span></button>-->
+          <!--<mat-toolbar class="top-navbar top menu">-->
+          <!--<app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>-->
+          <app-shopping-widgets></app-shopping-widgets>
+          <!--</mat-toolbar>-->
+
+        </div>
+        <div>&nbsp;&nbsp;&nbsp;</div>
+        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
+          <!--<button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>-->
+          <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">favorite</mat-icon></a></span>
+
+        </div>
+        <div>&nbsp;&nbsp;&nbsp;</div>
+
+        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
+          <!--<button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>-->
+          <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>
+
+        </div>
+      </div>
+
+
+
+      <!--<div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
+
+        <button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>
+      </div>
+      <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
+        <button mat-mini-fab color="basic"> <span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-cart-plus"></i></a></span></button>
+      </div>
+      <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
+        <button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>
+      </div>-->
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <div class="menu-container4">
+    <app-menu></app-menu>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <img src="assets/images/frontpage.PNG">
+  </div>
+  <router-outlet></router-outlet>
+
+  <app-footer></app-footer>
+
+
+</mat-sidenav-container>
