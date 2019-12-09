@@ -14,6 +14,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,13 +28,17 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\components\main\main.component.ts" />
+    <None Remove="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <None Remove="ClientApp\src\app\components\shared\shared.module.ts" />
+    <None Remove="ClientApp\src\app\modals\main-carousel.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\main\main.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\shared\shared.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modals\main-carousel.model.ts" />
   </ItemGroup>
 
   <ItemGroup>

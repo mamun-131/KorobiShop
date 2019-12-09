@@ -1,11 +1,11 @@
 
 
 
-<mat-toolbar-row fxHide fxShow.gt-sm fxLayoutAlign="space-between start">
+<mat-toolbar-row class="container" fxHide fxShow.gt-sm fxLayoutAlign="space-between start" >
   <!--<div class="main-menu" fxHide fxShow.gt-sm  style=" background-color:palevioletred; width:100%;position:center;">-->
 
-  <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" style="width:100%; height:auto;"  [color]="'warn'" (mouseover)="tabClick($event)" [selectedIndex]="selectedIndex">
-    <mat-tab mat-button label="করবী">
+  <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu main-menu"   [color]="'warn'" (mouseleave)="selectedIndex=0; selectedIndex1=0; selectedIndex2=0; selectedIndex3=0; selectedIndex4=0;" (mouseover)="tabClick($event)" [selectedIndex]="selectedIndex">
+    <mat-tab mat-button label="করবী" >
       <!--<div class="example-small-box mat-elevation-z4">
         Small content
       </div>-->
@@ -13,13 +13,13 @@
     <mat-tab label="বই" >
       <!--<div style="background-color: whitesmoke;box-sizing:border-box;height:50%;width:100%;position: center;">-->
 
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" style="width:100%;background-color:lightgray;height:auto;" (mouseover)="tabClick1($event)" [selectedIndex]="selectedIndex1">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center"  class="mat-tab-group-menu" (mouseover)="tabClick1($event)" [selectedIndex]="selectedIndex1">
 
-        <mat-tab label="বিশেষ ছাড়">
+        <mat-tab label="বিশেষ ছাড়" >
         </mat-tab>
 
-        <mat-tab label="বিষয়" style="display:flex;">
-          <mat-grid-list cols="8" rowHeight="6:1">
+        <mat-tab label="বিষয়" style="display:flex;" >
+          <mat-grid-list cols="6" rowHeight="6:1" >
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ছোটদের বই</a> </mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">English Fiction</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">English Nonfiction</a></mat-grid-tile>
@@ -46,8 +46,8 @@
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">আত্মউন্নয়ন, মোটিভেশনাল</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
-        <mat-tab label="লেখক">
-          <mat-grid-list cols="8" rowHeight="6:1">
+        <mat-tab label="লেখক" >
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">হুমায়ুন আহমেদ</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">মুহম্মদ জাফর ইকবাল</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">সৈয়দ শামসুল হক</a></mat-grid-tile>
@@ -56,25 +56,25 @@
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">More...</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
-        <mat-tab label="প্রকাশনী">
-          <mat-grid-list cols="8" rowHeight="6:1">
+        <mat-tab label="প্রকাশনী" >
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">অন্যপ্রকাশ	অন্যপ্রকাশ</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">বাংলা একাডেমি</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">বাতিঘর প্রকাশনী</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ইসলামিক ফাউন্ডেশন</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
-        <mat-tab label="প্যাকেজ">
+        <mat-tab label="প্যাকেজ" >
           <!--<div class="example-large-box mat-elevation-z4">
             Large content
           </div>-->
         </mat-tab>
-        <mat-tab label="জনপ্রিয় বই">
+        <mat-tab label="জনপ্রিয় বই" >
           <!--<div class="example-large-box mat-elevation-z4">
             Large content
           </div>-->
         </mat-tab>
-        <mat-tab label="নতুন প্রকাশিত বই">
+        <mat-tab label="নতুন প্রকাশিত বই" >
           <!--<div class="example-large-box mat-elevation-z4">
             Large content
           </div>-->
@@ -93,8 +93,8 @@
 
       <!--</div>-->
     </mat-tab>
-    <mat-tab label="স্টেশনারি">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" style="width:100%;background-color:lightgray;height:auto;" (mouseover)="tabClick2($event)" [selectedIndex]="selectedIndex2">
+    <mat-tab label="স্টেশনারি" >
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="tabClick2($event)" [selectedIndex]="selectedIndex2">
 
         <mat-tab label="বিশেষ ছাড়">
         </mat-tab>
@@ -103,7 +103,7 @@
         <mat-tab label="আইডি ও ফিতা">
         </mat-tab>
         <mat-tab label="পেপার, খাতা, নোটবুক & ডাইরি">
-          <mat-grid-list cols="8" rowHeight="6:1">
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">পেপার</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">খাতা</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">নোটবুক</a></mat-grid-tile>
@@ -123,15 +123,15 @@
         </mat-tab>
       </mat-tab-group>
     </mat-tab>
-    <mat-tab label="আর্ট & ক্রাফট">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" style="width:100%;background-color:lightgray;height:auto;" (mouseover)="tabClick3($event)" [selectedIndex]="selectedIndex3">
+    <mat-tab label="আর্ট & ক্রাফট" >
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="tabClick3($event)" [selectedIndex]="selectedIndex3">
 
         <mat-tab label="বিশেষ ছাড়">
         </mat-tab>
         <mat-tab label="নতুন ক্রাফট">
         </mat-tab>
         <mat-tab label="পেপার">
-          <mat-grid-list cols="8" rowHeight="6:1">
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">গিফট কার্ড</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">হ্যান্ডমেইড ডাইরি</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">বুক মার্ক</a></mat-grid-tile>
@@ -144,7 +144,7 @@
         <mat-tab label="সিরামিক">
         </mat-tab>
         <mat-tab label="মাটির তৈরি">
-          <mat-grid-list cols="8" rowHeight="6:1">
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ফুলদানি</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">টি সেট</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ওয়াল হেঙ্গিং</a></mat-grid-tile>
@@ -155,7 +155,7 @@
         <mat-tab label="ক্যান্ডেল">
         </mat-tab>
         <mat-tab label="পুঁতির পণ্য">
-          <mat-grid-list cols="8" rowHeight="6:1">
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ব্যাগ</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">টিস্যু বক্স</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ডর বেল</a></mat-grid-tile>
@@ -163,7 +163,7 @@
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="চামড়াজাত পণ্য">
-          <mat-grid-list cols="8" rowHeight="6:1">
+          <mat-grid-list cols="6" rowHeight="6:1">
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ব্যাগ</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ব্যাল্ট</a></mat-grid-tile>
             <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">ডর বেল</a></mat-grid-tile>
@@ -174,7 +174,7 @@
 
     </mat-tab>
     <mat-tab label="প্রাতিষ্ঠানিক অর্ডার">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" style="width:100%;background-color:lightgray;height:auto;" (mouseover)="tabClick4($event)" [selectedIndex]="selectedIndex4">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="tabClick4($event)" [selectedIndex]="selectedIndex4">
 
         <mat-tab label="কনফারেন্স">
         </mat-tab>

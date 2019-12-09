@@ -10,8 +10,11 @@ import { NgxImgZoomModule } from 'ngx-img-zoom';
 
 
 import { MainComponent } from './components/main/main.component';
+//import { HeaderThreeComponent } from './components/shared/header-three/header-three.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './components/shared/shared.module';
+import { ShopModule } from './components/shop/shop.module';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -26,11 +29,14 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+        FetchDataComponent
+        //,
+        //HeaderThreeComponent
   ],
   imports: [
       BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
       SharedModule,
+      ShopModule,
     HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,

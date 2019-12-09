@@ -26,20 +26,22 @@ import { MatTableModule } from '@angular/material';
 //import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
-//import { OrderByPipe } from './pipes/order-by.pipe';
-//import { ProductService } from './services/product.service';
-//import { CartService } from './services/cart.service';
+import { OrderByPipe } from './pipes/order-by.pipe';
+
+import { AppCarouselService } from './services/carousel.service';
+import { ProductService } from './services/product.service';
+import { CartService } from './services/cart.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
-//import { BannersComponent } from './banners/banners.component';
+import { BannersComponent } from './banners/banners.component';
 //import { HeaderTwoComponent } from './header-two/header-two.component';
 import { ShoppingWidgetsComponent } from './shopping-widgets/shopping-widgets.component';
 import { HeaderThreeComponent } from './header-three/header-three.component';
-//import { BannersFourComponent } from './banners-four/banners-four.component';
-//import { BlogSectionComponent } from './blog-section/blog-section.component';
-//import { BannerPromotionComponent } from './banner-promotion/banner-promotion.component';
+import { BannersFourComponent } from './banners-four/banners-four.component';
+import { BlogSectionComponent } from './blog-section/blog-section.component';
+import { BannerPromotionComponent } from './banner-promotion/banner-promotion.component';
 //import { HeaderFourComponent } from './header-four/header-four.component';
-//import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
-//import { CategoriesSectionComponent } from './categories-section/categories-section.component';
+import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
+import { CategoriesSectionComponent } from './categories-section/categories-section.component';
 //import { FooterTwoComponent } from './footer-two/footer-two.component';
 
 
@@ -50,17 +52,17 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
         FooterComponent,
         MenuComponent,
         SidebarComponent,
-        //OrderByPipe,
-        //BannersComponent,
+        OrderByPipe,
+        BannersComponent,
         //HeaderTwoComponent,
         ShoppingWidgetsComponent,
         HeaderThreeComponent,
-        //BannersFourComponent,
-        //BlogSectionComponent,
-        //BannerPromotionComponent,
+        BannersFourComponent,
+        BlogSectionComponent,
+        BannerPromotionComponent,
         //HeaderFourComponent,
-        //CategoriesMenuComponent,
-        //CategoriesSectionComponent,
+        CategoriesMenuComponent,
+        CategoriesSectionComponent,
         //FooterTwoComponent
     ],
     imports: [
@@ -108,29 +110,30 @@ import { HeaderThreeComponent } from './header-three/header-three.component';
         MatTabsModule,
         MatDividerModule,
         MatCardModule,
-        //OrderByPipe,
+        OrderByPipe,
         //HeaderComponent,
         FooterComponent,
         MenuComponent,
         SidebarComponent,
-        //BannersComponent,
+        BannersComponent,
         FlexLayoutModule
         ,
         //HeaderTwoComponent,
         HeaderThreeComponent,
         //HeaderFourComponent,
         ShoppingWidgetsComponent,
-        //BannersFourComponent,
-        //BlogSectionComponent,
-        //BannerPromotionComponent,
-        //CategoriesMenuComponent,
-        //CategoriesSectionComponent,
+        BannersFourComponent,
+        BlogSectionComponent,
+        BannerPromotionComponent,
+        CategoriesMenuComponent,
+        CategoriesSectionComponent,
         //FooterTwoComponent
 
     ],
     providers: [
-        //ProductService,
-        //CartService
+        ProductService,
+        CartService,
+        AppCarouselService
     ]
 })
 export class SharedModule { }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
-//import { HomeComponent } from './components/shop/home/home.component';
+import { HomeComponent } from './components/shop/home/home.component';
 //import { DemoComponent } from './components/demo/demo.component';
 
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'home/four',
         pathMatch: 'full'
     },
     //{
@@ -19,10 +19,11 @@ const appRoutes: Routes = [
         path: '',
         component: MainComponent,
         children: [
-            //{
-            //    path: 'home',
-            //    loadChildren: './components/shop/shop.module#ShopModule'
-            //},
+            {
+                path: 'home',
+                loadChildren: './components/shop/shop.module#ShopModule'
+            }
+            //,
             //{
             //    path: 'pages',
             //    loadChildren: './components/pages/pages.module#PagesModule'
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'home/one'
+        redirectTo: 'home/four'
     }
 ];
 

@@ -11,12 +11,12 @@ import { SidenavMenu } from '../sidebar/sidebar-menu.model';
   styleUrls: ['./header-three.component.sass']
 })
 export class HeaderThreeComponent implements OnInit {
-
+    public banners = [];
   public sidenavMenuItems:Array<any>;
     isSearchVisible = false;
     public mainMenus = ['করবী ', 'বই', 'স্টেশনারি', 'আর্ট & ক্রাফট', 'প্রাতিষ্ঠানিক অর্ডার'];
     								
-  public mainMenu:any;
+  public mainMenu:string;
   public flags = [
     { name:'English', image: 'assets/images/flags/gb.svg' },
     { name:'German', image: 'assets/images/flags/de.svg' },
@@ -32,6 +32,8 @@ export class HeaderThreeComponent implements OnInit {
   //shoppingCartItems: CartItem[] = [];
   
     public url: any;
+
+
     navItems: SidenavMenu[] = [
         {
             displayName: 'করবী',
