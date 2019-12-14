@@ -1,0 +1,25 @@
+[
+  {
+    "title": "ব্যানার","subtitle": "Sale up to 30% off all products in the new collection.", "image": "assets/images/product/laptop.png"
+  },
+  {
+    "title": "ব্যানার",
+    "subtitle": "Sale up to 30%.",
+    "image": "assets/images/product/tablet.png"
+  },
+  {
+    "title": "ব্যানার",
+    "subtitle": "Sale up to 30%.",
+    "image": "assets/images/product/cameras.png"
+  },
+  {
+    "title": "ব্যানার",
+    "subtitle": "Sale up to 20%.",
+    "image": "assets/images/product/mobiles.png"
+  },
+  {
+    "title": "ব্যানার",
+    "subtitle": "Sale up to 20%.",
+    "image": "assets/images/product/cameras.png"
+  }
+  ]

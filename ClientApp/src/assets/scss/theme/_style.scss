@@ -89,7 +89,7 @@ h4 {
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 h5 {
@@ -753,144 +753,164 @@ line-height: 23px;
 *  Home product section styles
 ****************************************/
 
-  .products {
-    position: relative;
-    .swiper-button-prev.swiper-button-disabled[_ngcontent-c25] {
-      pointer-events: auto;
+.products {
+  position: relative;
+
+  .swiper-button-prev.swiper-button-disabled[_ngcontent-c25] {
+    pointer-events: auto;
   }
-    .product-wraper{
-      padding: 20px 0px 20px 20px;
-      .product-box {
-        width: 100%;
 
+  .product-wraper {
+    padding: 20px 0px 20px 20px;
 
-      }
+    .product-box {
+      width: 100%;
     }
+  }
   //   .swiper-slide {
   //  width: 245.2px !important;
   //  margin-right: 16px;
   //   }
-    .product-item {
-      position: unset;
-      height: auto;
-      transition: .4s;
-      padding: 26px 5px 5px 5px;
-      .mat-card:not([class*=mat-elevation-z]) {
+  .product-item {
+    position: unset;
+    height: auto;
+    transition: .4s;
+    padding: 26px 5px 5px 5px;
 
-        box-shadow: 2px 2px 6px 0px rgba(0,0,0,.1), 0 1px 1px 0 rgba(0,0,0,.0), 0 1px 3px 0 rgba(0,0,0,.12) !important;
-        padding: 0;
-        .product-img {
-          background: $baners-background;
-          img {
-            max-width: 180px;
-            margin-bottom: 12px;
-            display: block;
-              margin-left: auto;
-              margin-right: auto;
+    .mat-card:not([class*=mat-elevation-z]) {
+      box-shadow: 2px 2px 6px 0px rgba(0,0,0,.1), 0 1px 1px 0 rgba(0,0,0,.0), 0 1px 3px 0 rgba(0,0,0,.12) !important;
+      padding: 0;
+
+      .product-img {
+        background: $baners-background;
+
+        img {
+          width: 180px;
+          height: 180px;
+          margin-bottom: 12px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      .product-info-wrapper {
+        padding: 15px;
+
+        .icons {
+          position: absolute;
+          top: 30px;
+          right: 10px;
+          opacity: 0;
+          transition: all 0.5s ease;
+
+          a {
+            color: $grey10;
+            cursor: pointer;
+            transition: 0.5s ease;
+            margin-bottom: 5px;
+
+            &:hover {
+              color: $theme-main;
+            }
           }
         }
-        .product-info-wrapper {
-          padding: 15px;
-          .icons {
-            position: absolute;
-            top: 30px;
-            right: 10px;
-            opacity: 0;
-            transition: all 0.5s ease;
-            a {
-              color: $grey10;
-              cursor: pointer;
-              transition: 0.5s ease;
-              margin-bottom: 5px;
-              &:hover {
-                color: $theme-main;
-              }
-            }
-          }
 
 
-          .stars {
-            color: $theme-main;
-            margin: 2px 0 10px 0;
-            span {
-              color: $grey3;
-              font-size: 13px;
-              margin-left: 10px;
-            }
-            mat-icon{
-              font-size: 17px;
-                line-height: 17px;
-                height: 17px;
-                width: 17px;
-                vertical-align: middle;
-            }
-          }
-          .category{
-            margin-bottom: 4px;
-        display: block;
-        font-weight: 300;
-           }
-           span {
-            color: $grey5;
-            font-size: 14px;
+        .stars {
+          color: $theme-main;
+          margin: 2px 0 10px 0;
 
+          span {
+            color: $grey3;
+            font-size: 13px;
+            margin-left: 10px;
           }
-          .price-wrap {
-            p{
-              font-size: 19px;
-             }
-             mat-icon{
-              color: $white;
-             }
-             a {
+
+          mat-icon {
+            font-size: 17px;
+            line-height: 17px;
+            height: 17px;
+            width: 17px;
+            vertical-align: middle;
+          }
+        }
+
+        .category {
+          margin-bottom: 4px;
+          display: block;
+          font-weight: 300;
+        }
+
+        span {
+          color: $grey5;
+          font-size: 14px;
+        }
+
+        .price-wrap {
+          p {
+            font-size: 19px;
+          }
+
+          mat-icon {
+            color: $white;
+          }
+
+          a {
+            background: $theme-main;
+            cursor: pointer;
+            transition: .3s;
+            width: 38px;
+            height: 38px;
+            background: $white-dark;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 46px;
+
+            &:hover {
               background: $theme-main;
-              cursor: pointer;
+            }
+
+            mat-icon {
               transition: .3s;
-              width: 38px;
-          height: 38px;
-          background: $white-dark;
-          border-radius: 50%;
-          text-align: center;
-          line-height: 46px;
-          &:hover {
+              font-size: 18px;
+            }
+          }
+        }
+
+        .title-wrap {
+
+          h4 {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-weight: 500;
+          }
+        }
+      }
+
+      &:hover {
+        .icons {
+          opacity: 1;
+        }
+
+        .price-wrap {
+          a {
             background: $theme-main;
           }
-              mat-icon {
-                transition: .3s;
-                font-size: 18px;
-              }
-
-            }
-          }
-          .title-wrap {
-            h4 {
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              font-weight: 500;
-            }
-          }
         }
-        &:hover {
-          .icons {
-           opacity: 1;
-          }
-          .price-wrap {
-            a {
-             background: $theme-main;
-            }
-          }
-         }
+      }
     }
+
     button.swipe-arrow {
       position: absolute;
       top: 50%;
       margin-top: -22px;
       z-index: 10;
       background-image: none;
-  }
     }
   }
+}
 
 
 
@@ -908,21 +928,33 @@ line-height: 23px;
     background: $baners-background !important;
     margin-right: 15px;
   }
+
   .bn-wrap {
     margin-bottom: 18px;
   }
+
+  .banner-buttons {
+    max-width: 20%;
+    height:auto;
+    font-stretch: narrower;
+    background-color: $theme-main;
+ 
+  }
+
   .baner {
     padding: 20px;
     height: 100%;
     transition: .15s ease-in;
     text-align: left;
-    h4{
+
+    h4 {
       font-size: 21px;
       font-weight: 600;
       color: $grey-dark;
       margin-bottom: 5px;
       text-transform: uppercase;
     }
+
     h4.big-title {
       font-size: 37px;
       font-weight: 500;
@@ -930,29 +962,33 @@ line-height: 23px;
       margin-bottom: 5px;
       text-transform: uppercase;
     }
+
     .info {
       .big-price {
         background: $theme-main !important;
-      padding: 10px 32px !important;
-      color: $grey-dark !important;
-      font-size: 44px !important;
-      width: 135px;
-          border-radius: 5px;
-          text-align: center;
+        padding: 10px 32px !important;
+        color: $grey-dark !important;
+        font-size: 44px !important;
+        width: 135px;
+        border-radius: 5px;
+        text-align: center;
       }
     }
-    p{
+
+    p {
       color: $theme-main-dark
     }
-    a{
+
+    a {
       font-size: 16px;
       font-weight: 700;
-     text-decoration: none;
-     color: $theme-main-dark;
-     margin-top: 15px;
-     display: block;
+      text-decoration: none;
+      color: $theme-main-dark;
+      margin-top: 15px;
+      display: block;
     }
   }
+
   .first {
     height: 450px;
     background-size: contain;
@@ -960,6 +996,7 @@ line-height: 23px;
     background-position: center;
     border-radius: 4px;
   }
+
   .seccond {
     /* height: 200px; */
     background-size: cover;
@@ -2583,7 +2620,7 @@ line-height: 23px;
  .products {
   .products-four {
     h3 {
-      font-size: 22px;
+      font-size: 40px;
       font-weight: 500;
       text-align: center;
       position: relative;
@@ -2623,7 +2660,7 @@ line-height: 23px;
 
   .banner-pro {
     img {
-      max-width:100%;
+      max-width: 100%;
       height: auto;
     }
   }
@@ -3963,10 +4000,15 @@ line-height: 23px;
 ****************************************/
 
 .product-dialog {
+
+
   .mat-dialog-container {
     overflow: visible;
   }
+
   .swiper-container {
+
+
     .swiper-wrapper {
       img.img-fluid {
         margin: auto;
@@ -3974,8 +4016,10 @@ line-height: 23px;
       }
     }
   }
+
   .product-right {
     padding: 0 30px;
+
     .product-details {
       .discription {
         padding-top: 15px;
@@ -3983,32 +4027,36 @@ line-height: 23px;
         border-top: 1px dashed $grey-light;
         border-bottom: 1px dashed $grey-light;
 
-          .bold {
-            font-weight: 600;
-          }
-          p.productDescription {
-            line-height: 24px;
-            margin-top: 5px;
-          }
+        .bold {
+          font-weight: 600;
+        }
 
+        p.productDescription {
+          line-height: 24px;
+          margin-top: 5px;
+        }
       }
+
       h4 {
         span {
           padding-left: 5px;
           color: $theme-main-red;
           font-size: 25px;
         }
+
         del {
           color: $grey;
           font-size: 18px;
         }
       }
+
       h3.price {
         font-size: 26px;
         font-weight: 400;
         margin: 10px 0;
       }
     }
+
     .quantity {
       input {
         width: 80px;
@@ -4017,10 +4065,12 @@ line-height: 23px;
         height: 35px;
         border: 1px solid $grey3;
       }
+
       span {
         margin-bottom: 5px;
-       }
+      }
     }
+
     .avalibility {
       .red {
         color: $theme-main-red;
@@ -4028,6 +4078,7 @@ line-height: 23px;
       }
     }
   }
+
   .mat-dialog-container {
     .close-btn-outer button {
       position: absolute;
@@ -4035,6 +4086,7 @@ line-height: 23px;
       top: -44px;
     }
   }
+
   .product-dialog {
     .close-btn-outer {
       position: relative;

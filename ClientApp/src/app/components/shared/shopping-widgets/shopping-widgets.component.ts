@@ -6,34 +6,34 @@ import { CartItem } from 'src/app/modals/cart-item';
 import { ProductService } from '../services/product.service';
 
 @Component({
-  selector: 'app-shopping-widgets',
-  templateUrl: './shopping-widgets.component.html',
-  styleUrls: ['./shopping-widgets.component.sass']
+    selector: 'app-shopping-widgets',
+    templateUrl: './shopping-widgets.component.html',
+    styleUrls: ['./shopping-widgets.component.sass']
 })
 export class ShoppingWidgetsComponent implements OnInit {
 
-  products: Product[];
-  indexProduct: number;
+    products: Product[];
+    indexProduct: number;
 
-  public sidenavMenuItems:Array<any>;
+    public sidenavMenuItems: Array<any>;
 
-  @Input() shoppingCartItems: CartItem[] = [];
+    @Input() shoppingCartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService, public productService: ProductService) { }
+    constructor(private cartService: CartService, public productService: ProductService) { }
 
-  ngOnInit() {
-  }
-  public updateCurrency(curr) {
-    this.productService.currency = curr;
-  }
+    ngOnInit() {
+    }
+    public updateCurrency(curr) {
+        this.productService.currency = curr;
+    }
 
 
-  public removeItem(item: CartItem) {
-    this.cartService.removeFromCart(item);
-  }
+    public removeItem(item: CartItem) {
+        this.cartService.removeFromCart(item);
+    }
 
-  public getTotal(): Observable<number> {
-    return this.cartService.getTotalAmount();
-  }
+    public getTotal(): Observable<number> {
+        return this.cartService.getTotalAmount();
+    }
 
 }

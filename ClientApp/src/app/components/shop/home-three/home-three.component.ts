@@ -35,6 +35,7 @@ export class HomeThreeComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
+
     this.productService.getProducts()
     .subscribe(
       (product: Product[]) =>  {

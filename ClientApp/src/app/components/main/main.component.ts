@@ -2,6 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SidebarMenuService } from '../shared/sidebar/sidebar-menu.service';
 import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
+import { Product } from 'src/app/modals/product.model';
+import { CartItem } from 'src/app/modals/cart-item';
+import { CartService } from '../shared/services/cart.service';
+
 
 @Component({
     selector: 'app-main',
@@ -12,9 +16,12 @@ export class MainComponent implements OnInit {
     public sidenavMenuItems: Array<any>;
     public url: any;
 
+    products: Product[];
+    indexProduct: number;
+    shoppingCartItems: CartItem[] = [];
 
-    constructor(public router: Router,  public sidenavMenuService: SidebarMenuService) {
-  
+    constructor(public router: Router, public sidenavMenuService: SidebarMenuService, private cartService: CartService) {
+        this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 this.url = event.url;
@@ -26,9 +33,9 @@ export class MainComponent implements OnInit {
 
     public banners = [];
     isSearchVisible = false;
-    public mainMenus = ['করবী ', 'বই', 'স্টেশনারি', 'আর্ট & ক্রাফট', 'প্রাতিষ্ঠানিক অর্ডার'];
+    public mainMenus = ['করবী', 'বই', 'স্টেশনারি', 'আর্ট & ক্রাফট', 'প্রাতিষ্ঠানিক অর্ডার'];
 
-    public mainMenu: string;
+    public mainMenu: string = 'করবী';
     public flags = [
         { name: 'English', image: 'assets/images/flags/gb.svg' },
         { name: 'German', image: 'assets/images/flags/de.svg' },
@@ -38,12 +45,20 @@ export class MainComponent implements OnInit {
     ]
     public flag: any;
 
-    //products: Product[];
 
-    indexProduct: number;
-    //shoppingCartItems: CartItem[] = [];
+    showSearch() {
+        this.isSearchVisible = true;//!this.isSearchVisible;
+    }
+    hideSearch() {
+        this.isSearchVisible = false;
+    }
 
- 
+
+    public changeMainMenu(mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+
+
 
 
     navItems: SidenavMenu[] = [
@@ -564,17 +579,7 @@ export class MainComponent implements OnInit {
     //    //this.flag = this.flags[0];
     //}
 
-    showSearch() {
-        this.isSearchVisible = true;//!this.isSearchVisible;
-    }
-    hideSearch() {
-        this.isSearchVisible = false;
-    }
 
-
-    public changeMainMenu(mainMenu) {
-        this.mainMenu = mainMenu;
-    }
   //public changeLang(flag){
   //  this.flag = flag;
   //}

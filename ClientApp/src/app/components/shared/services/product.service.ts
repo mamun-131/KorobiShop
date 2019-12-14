@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, Subscriber } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject, Subscriber, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/modals/product.model';
 import { MatSnackBar } from '@angular/material';
 import { map } from 'rxjs/operators';
-
-
+import { Inject } from '@angular/core';
+import { retry, catchError } from 'rxjs/operators';
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("compareItem")) || [];
@@ -14,9 +14,9 @@ let products = JSON.parse(localStorage.getItem("compareItem")) || [];
   providedIn: 'root'
 })
 export class ProductService {
-  public currency : string = 'USD';
+  public currency : string = 'TK. ';
   public catalogMode : boolean = false;
-
+    @Inject('BASE_URL') baseUrl: string;
   private _url: string = "assets/data/";
   public url = "assets/data/banners.json";
 
@@ -120,6 +120,68 @@ public removeFromCompare(product: Product) {
 
        })
      ));
-  }
+    }
+
+
+
+
+
+
+
+
+////////////////////////////////////New Addition///////////////////////////////////////////////////////////////
+
+
+
+
+    // Http Headers
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+
+        })
+    }
+    options = {
+        headers: this.httpOptions.headers
+    }
+
+    
+    // GET ALL
+    getAllDiscountProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllDiscountProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getAllOldPopularProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllOldPopularProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+
+
+    // Error handling
+    errorHandl(error) {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // Get client-side error
+            errorMessage = error.error.message;
+        } else {
+            // Get server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        console.log(errorMessage);
+        return throwError(errorMessage);
+    }
 
 }

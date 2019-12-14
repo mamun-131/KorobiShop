@@ -4,7 +4,7 @@ import { ProductService } from '../../shared/services/product.service';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../shared/services/cart.service';
 import { AppCarouselService } from '../../shared/services/carousel.service';
-import { MainCarousel } from 'src/app/modals/main-carousel.model';
+
 
 @Component({
   selector: 'app-home-four',
@@ -24,11 +24,15 @@ export class HomeFourComponent implements OnInit {
   ]
   public flag:any;
 
-  products: Product[];
+    products: Product[];
+
+    productsDiscountList: Product[];
+    productsOldBookList: Product[];
     public slides: []=[] ;
   indexProduct: number;
   shoppingCartItems: CartItem[] = [];
-  wishlistItems  :   Product[] = [];
+    wishlistItems: Product[] = [];
+    discount: string = "discount";
 
 
   //public slides = [
@@ -75,8 +79,23 @@ export class HomeFourComponent implements OnInit {
           );
 
 
+      this.productService.getAllDiscountProduct()
+          .subscribe(
+              (product: Product[]) => {
+                  this.productsDiscountList = product
+              }
+          );
+      this.productService.getAllOldPopularProduct()
+          .subscribe(
+              (product: Product[]) => {
+                  this.productsOldBookList = product
+              }
+          );
 
 
+
+
+      
  this.currency = this.currencies[0];
   this.flag = this.flags[0];
 

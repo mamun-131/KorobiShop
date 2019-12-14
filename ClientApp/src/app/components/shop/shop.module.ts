@@ -20,7 +20,7 @@ import { HomeThreeComponent } from './home-three/home-three.component';
 // Import the library
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 
-import { ProductCarouselComponent } from './../shop/home/product-carousel/product-carousel.component';
+import { ProductCarouselComponent } from './../shop/home-four/product-carousel/product-carousel.component';
 import { from } from 'rxjs';
 import { ProductCarouselTwoComponent } from './home-two/product-carousel-two/product-carousel-two.component';
 import { ProductCarouselThreeComponent } from './home-three/product-carousel-three/product-carousel-three.component';

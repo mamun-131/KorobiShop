@@ -150,37 +150,42 @@
           <!--<button mat-mini-fab color="basic"> <span><app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets></span></button>-->
           <!--<mat-toolbar class="top-navbar top menu">-->
           <!--<app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>-->
-          <app-shopping-widgets></app-shopping-widgets>
-          <!--</mat-toolbar>-->
+          <div class="call-bucket-wrap" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="center center">
+            <div class="main-menu-wrapper-3" fxLayout="row" fxLayoutAlign="space-between center">
+              <mat-toolbar class="top-navbar top menu">
+                <app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>
+              </mat-toolbar>
+            </div>
+            <!--</mat-toolbar>-->
+          </div>
+          </div>
+          <div>&nbsp;&nbsp;&nbsp;</div>
+          <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
+            <!--<button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>-->
+            <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">favorite</mat-icon></a></span>
 
+          </div>
+          <div>&nbsp;&nbsp;&nbsp;</div>
+
+          <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
+            <!--<button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>-->
+            <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>
+
+          </div>
         </div>
-        <div>&nbsp;&nbsp;&nbsp;</div>
-        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
-          <!--<button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>-->
-          <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">favorite</mat-icon></a></span>
-
-        </div>
-        <div>&nbsp;&nbsp;&nbsp;</div>
-
-        <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
-          <!--<button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>-->
-          <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>
-
-        </div>
-      </div>
 
 
 
       <!--<div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
 
-        <button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>
-      </div>
-      <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
-        <button mat-mini-fab color="basic"> <span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-cart-plus"></i></a></span></button>
-      </div>
-      <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
-        <button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>
-      </div>-->
+    <button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>
+  </div>
+  <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
+    <button mat-mini-fab color="basic"> <span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-cart-plus"></i></a></span></button>
+  </div>
+  <div class="main-menu-wrapper-3" fxLayout="row" fxLayout.sm="row" fxLayoutAlign="space-between center">
+    <button mat-mini-fab color="basic"><span><a class="navbar-link" [routerLink]="['/counter']">  <i class="fa fa-gratipay"></i></a></span></button>
+  </div>-->
 
 
 
