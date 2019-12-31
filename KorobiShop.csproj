@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
@@ -30,7 +31,11 @@
     <None Remove="ClientApp\src\app\components\main\main.component.ts" />
     <None Remove="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <None Remove="ClientApp\src\app\components\shared\shared.module.ts" />
+    <None Remove="ClientApp\src\app\modals\banners.model.ts" />
     <None Remove="ClientApp\src\app\modals\main-carousel.model.ts" />
+    <None Remove="ClientApp\src\app\modals\menuTagMap.model.ts" />
+    <None Remove="ClientApp\src\app\modals\productAtrribute.model.ts" />
+    <None Remove="ClientApp\src\app\modals\productImage.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +43,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\components\main\main.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\shared\shared.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modals\banners.model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\modals\menuTagMap.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modals\productAtrribute.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modals\productImage.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modals\main-carousel.model.ts" />
   </ItemGroup>
 

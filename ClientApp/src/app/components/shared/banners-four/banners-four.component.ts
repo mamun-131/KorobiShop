@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Banners } from '../../../modals/banners.model';
 
 @Component({
   selector: 'app-banners-four',
@@ -7,14 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BannersFourComponent implements OnInit {
 
-  @Input('banners') banners: Array<any> = [];
+    @Input('banners') banners: Array<Banners> = [];
+    @Input('bannerNumber') bannerNumber: number;
 
   constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
+
+
   }
 
-  public getBanner(index){
+    public getBanner(index) {
+        //console.log(this.banners);
+        //console.log(this.bannerNumber);
     return this.banners[index];
   }
 

@@ -11,6 +11,8 @@
                       <span class="category">{{product.category}}</span>
                       <div class="title-wrap">
                         <h4>{{product.name}}</h4>
+                        <h6><small>{{product.brand}}</small></h6>
+
                       </div>
                       <div class="stars">
                         <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
@@ -23,17 +25,23 @@
                       <div class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center">
 
                         <!--<p *ngIf="carouselType === 'discount';">-->
-                        <p>
+
+                        <div fxLayout="column">
+
                           TK.{{product.price | number : '1.2-2'}}
-                        </p>
+                        </div>
+                        <div fxLayout="column">
+                          <del><h6 *ngIf="product.salePrice != 0;" fxLayout="column"> TK.{{product.salePrice | number : '1.2-2'}}</h6></del>
+                        </div>
+
                         <a (click)="addToCart(product)"><mat-icon class="mat-icon-lg mat-icon material-icons">shopping_cart</mat-icon></a>
                       </div>
-                        <div class="icons" fxLayout="column">
-                           <a (click)="addToWishlist(product)"><mat-icon class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon></a>
-                           <a (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></a>
-                           <!--<a (click)="addToCompare(product)"><mat-icon>cached</mat-icon></a>-->
-                         </div>
-                     </div>
+                      <div class="icons" fxLayout="column">
+                        <a (click)="addToWishlist(product)"><mat-icon class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon></a>
+                        <a (click)="openProductDialog(product)"><mat-icon>remove_red_eye</mat-icon></a>
+                        <!--<a (click)="addToCompare(product)"><mat-icon>cached</mat-icon></a>-->
+                      </div>
+                    </div>
                   </mat-card>
             </div>
 

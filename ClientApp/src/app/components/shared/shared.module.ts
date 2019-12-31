@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -88,6 +89,7 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
         MatDividerModule,
         MatCardModule,
         FlexLayoutModule,
+        MatButtonToggleModule,
     ],
     exports: [
         CommonModule,
@@ -118,6 +120,7 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
         BannersComponent,
         FlexLayoutModule
         ,
+        MatButtonToggleModule,
         //HeaderTwoComponent,
         HeaderThreeComponent,
         //HeaderFourComponent,

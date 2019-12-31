@@ -6,6 +6,9 @@ import { MatSnackBar } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Inject } from '@angular/core';
 import { retry, catchError } from 'rxjs/operators';
+import { ProductImage } from 'src/app/modals/productImage.model';
+import { ProductAttribute } from 'src/app/modals/productAtrribute.model';
+import { MenuTagMap } from '../../../modals/menuTagMap.model';
 
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("compareItem")) || [];
@@ -167,9 +170,116 @@ public removeFromCompare(product: Product) {
                 catchError(this.errorHandl)
             )
     }
+    getAllMostSoldProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllMostSoldProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+    
+    getAllPreOrderProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllPreOrderProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+
+    getAllStationeryProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllStationeryProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getAllArtAndCraftProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllArtAndCraftProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getAllOrgOrderProduct(): Observable<Product[]> {
+        //console.log(this.baseUrl);
+        return this.httpClient.get<Product[]>('api/GetAllOrgOrderProduct/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
 
 
 
+    
+    
+
+    
+
+
+
+
+    // Get Products By Id
+    getProductById(id: number): Observable<Product> {
+        return this.httpClient.get<Product>('api/GetProductById/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getProducAttributeTagsById(id: number): Observable<ProductAttribute[]> {
+        return this.httpClient.get<ProductAttribute[]>('api/GetProducAttributeTagsById/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getMenuTagMapById(id: string): Observable<MenuTagMap> {
+        return this.httpClient.get<MenuTagMap>('api/GetMenuTagMapById/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    
+    getProductPicturesById(id: number): Observable<ProductImage[]> {
+        return this.httpClient.get<ProductImage[]>('api/GetProductImagesById/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+    
+    getProductByCategoryId(id: number): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetProductByCategory/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    getProductBySubCategoryId(catid: number, subid: number): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetProductBySubCategory/' + catid + '/' + subid)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+
+
+
+    GetAllPreOrderProduct
     // Error handling
     errorHandl(error) {
         let errorMessage = '';

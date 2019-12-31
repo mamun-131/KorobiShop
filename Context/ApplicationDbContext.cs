@@ -9,8 +9,14 @@ namespace KorobiShop.Context
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Main_carousel> Main_carousel { get; set; }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Banner_main_carousel> banner_main_carousel { get; set; }
+        public DbSet<Product> product { get; set; }
+        
+        public DbSet<Product_attribute_tags> product_attribute_tags { get; set; }
+        public DbSet<Product_image> product_image { get; set; }
+
+        public DbSet<Menu_tag_map> menu_tag_map { get; set; }
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base(context)
         {
             // "MyTasteDatabase": "Server=DESKTOP-K0O55OV\\SQLEXPRESS;Database=TasteDatabase;Trusted_Connection=True;"

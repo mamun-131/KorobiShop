@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/components/shared/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product, ColorFilter } from 'src/app/modals/product.model';
+import { MenuTagMap } from '../../../../modals/menuTagMap.model';
 
 @Component({
   selector: 'app-product-left-sidebar',
   templateUrl: './product-left-sidebar.component.html',
-  styleUrls: ['./product-left-sidebar.component.sass']
+    styleUrls: ['./product-left-sidebar.component.sass'],
+
 })
 export class ProductLeftSidebarComponent implements OnInit {
   public sidenavOpen:boolean = true;
@@ -22,18 +24,104 @@ export class ProductLeftSidebarComponent implements OnInit {
   public allItems: Product[] = [];
   public products: Product[] = [];
   public tags         :   any[] = [];
-  public colors       :   any[] = [];
+    public colors: any[] = [];
+    public menuTagMap: MenuTagMap;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.route.params.subscribe(
       (params: Params) => {
-        const category = params['category'];
-        this.productService.getProductByCategory(category).subscribe(products => {
-       this.allItems = products;
-       this.products = products.slice(0.8);
-       this.getTags(products)
-       this.getColors(products)
-        })
+            const category = params['category'];
+
+            //var strlength = category.length;
+            //var substrcat = category.substring(0, 9);
+            //var catid = category.substring(9, strlength);
+            //console.log(strlength);
+            //console.log(substrcat);
+
+            console.log(category);
+            if (category.charAt(0) == '-') {
+                this.productService.getMenuTagMapById("'" + category + "'").subscribe(cat => {
+                    this.menuTagMap = cat;
+                    console.log(this.menuTagMap[0]);
+                    if (this.menuTagMap[0].tagType == 'Category') {
+                        this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
+                            this.allItems = products;
+                            this.products = products.slice(0.8);
+                            console.log(products);
+
+                        });
+                    }
+
+                });
+
+            }
+            else {
+                this.productService.getProductByCategoryId(Number(category)).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
+
+            }
+
+
+
+ 
+            //if (strlength === 4) {
+            //    this.productService.getProductByCategoryId(category).subscribe(products => {
+            //        this.allItems = products;
+            //        this.products = products.slice(0.8);
+            //        console.log('mmmmmm');
+            //        console.log(products);
+            //        //this.getTags(products)
+            //        //this.getColors(products)
+            //    })
+            //}
+            //else {
+            //switch (category) {
+            //    case '000000cat1':
+            //        this.productService.getProductByCategoryId('1001').subscribe(products => {
+            //            this.allItems = products;
+            //            this.products = products.slice(0.8);
+            //            console.log(products);
+            //            //this.getTags(products)
+            //            //this.getColors(products)
+            //        })
+            //        break;
+            //    case '000subcat':
+            //        let toArray = catid.split("-", 2);
+            //        this.productService.getProductBySubCategoryId(toArray[0], toArray[1]).subscribe(products => {
+            //            this.allItems = products;
+            //            this.products = products.slice(0.8);
+            //            console.log(products);
+            //            //this.getTags(products)
+            //            //this.getColors(products)
+            //        })
+            //        break;
+            //    case 'subsubcat':
+            //        this.productService.getProductByCategoryId(catid).subscribe(products => {
+            //            this.allItems = products;
+            //            this.products = products.slice(0.8);
+            //            console.log(products);
+            //            //this.getTags(products)
+            //            //this.getColors(products)
+            //        })
+            //        break;              
+            //   default:
+            //        //this.productService.getProductByCategoryId(1).subscribe(products => {
+            //        //    this.allItems = products;
+            //        //    this.products = products.slice(0.8);
+            //        //    console.log(products);
+            //        //    //this.getTags(products)
+            //        //    //this.getColors(products)
+            //        //})
+            //        break;
+            //}
+            //}
+   
+
+
       }
     )
   }

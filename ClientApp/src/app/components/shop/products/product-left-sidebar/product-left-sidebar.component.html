@@ -72,11 +72,11 @@
                 </div>
               </div>
               <div [@Animation]="animation" fxLayout="row wrap" class="products-wrapper">
-                  <!--<div *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
+                  <div *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                      <div class="product-box">
                         <app-product [product]="products"></app-product>
                      </div>
-                  </div>-->
+                  </div>
               </div>
 
               <div *ngIf="products.length > 0" fxLayout="row wrap ">

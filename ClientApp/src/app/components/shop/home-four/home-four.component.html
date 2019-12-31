@@ -39,7 +39,7 @@
 
           <h3>সর্বাধিক বিক্রিত পণ্য  </h3> <a mat-fab color="primary" class="navbar-link"> ALL </a>
 
-          <app-product-carousel [product]="products | slice:8:16"></app-product-carousel>
+          <app-product-carousel [product]="productsMostSoldList | slice:0:25"></app-product-carousel>
 
         </div>
       </div>
@@ -48,10 +48,8 @@
   </div>
 
 
-
-
   <div class="main-banner">
-    <app-banners-four [banners]="banners"></app-banners-four>
+    <app-banners-four [bannerNumber]="0" [banners]="banners"></app-banners-four>
   </div>
 
 
@@ -61,11 +59,45 @@
       <div class="products sec-padding bg">
 
         <div class="products-four">
-          
+
           <h3>প্রি -অর্ডার   </h3> <a mat-fab color="primary" class="navbar-link"> ALL </a>
 
-          <app-product-carousel [product]="products | slice:8:16" ></app-product-carousel>
-         
+          <app-product-carousel [product]="productsPreOrderList | slice:0:25"></app-product-carousel>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="featured-products-wrap">
+    <div class="container">
+      <div class="products sec-padding bg">
+
+        <div class="products-four">
+
+          <h3>স্টেশনারি   </h3> <a mat-fab color="primary" class="navbar-link"> ALL </a>
+
+          <app-product-carousel [product]="productsStationeryList | slice:0:25"></app-product-carousel>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="featured-products-wrap">
+    <div class="container">
+      <div class="products sec-padding bg">
+
+        <div class="products-four">
+
+          <h3>আর্ট & ক্রাফট   </h3> <a mat-fab color="primary" class="navbar-link"> ALL </a>
+
+          <app-product-carousel [product]="productsArtAndCraftList | slice:0:25"></app-product-carousel>
+
         </div>
       </div>
 
@@ -74,14 +106,32 @@
 
 
 
+  <div class="featured-products-wrap">
+    <div class="container">
+      <div class="products sec-padding bg">
 
+        <div class="products-four">
+
+          <h3>প্রাতিষ্ঠানিক অর্ডার   </h3> <a mat-fab color="primary" class="navbar-link"> ALL </a>
+
+          <app-product-carousel [product]="productsOrgOrdertList | slice:0:25"></app-product-carousel>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="main-banner">
+    <app-banners-four  [bannerNumber]="1" [banners]="banners"></app-banners-four>
+  </div>
 
 
   <!--<div class="container">
     <app-product-vertical [products]="products"></app-product-vertical>
   </div>-->
-
-  <div class="blog-section sec-padding">
+  <!--<div class="blog-section sec-padding">
     <div class="container">
       <div class="section-title">
         <h3>Latest From Our Blog</h3>
@@ -93,6 +143,6 @@
 
       <app-blog-section></app-blog-section>
     </div>
-  </div>
+  </div>-->
 
 </div>

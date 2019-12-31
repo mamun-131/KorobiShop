@@ -12,7 +12,7 @@ import { AppCarouselService } from '../../shared/services/carousel.service';
   styleUrls: ['./home-four.component.sass']
 })
 export class HomeFourComponent implements OnInit {
-  public banners = [];
+
   public currencies = ['USD', 'EUR'];
   public currency:any;
   public flags = [
@@ -28,7 +28,14 @@ export class HomeFourComponent implements OnInit {
 
     productsDiscountList: Product[];
     productsOldBookList: Product[];
-    public slides: []=[] ;
+    productsMostSoldList: Product[];
+    productsPreOrderList: Product[];
+    productsStationeryList: Product[];
+    productsArtAndCraftList: Product[];
+    productsOrgOrdertList: Product[];
+
+    public slides: [] = [];
+    public banners = [];
   indexProduct: number;
   shoppingCartItems: CartItem[] = [];
     wishlistItems: Product[] = [];
@@ -49,24 +56,29 @@ export class HomeFourComponent implements OnInit {
       
   }
 
-  ngOnInit() {
-    this.productService.getBanners()
-    .subscribe(
-      data => this.banners = data
-    );
+    ngOnInit() {
 
+        
+
+    //this.productService.getBanners()
+    //.subscribe(
+    //  data => this.banners = data
+    //);
+
+
+        this.appCarouselService.getAllBanners()
+            .subscribe(
+                (items: any) => {
+                    this.banners = items;
+                    console.log(this.banners);
+
+                }
+            );
       this.appCarouselService.getAllMain_carousel()
           .subscribe(
               (items: any) => {
                   this.slides = items;
-
-                  console.log(this.slides.length);
-
-                  //for (let i = 0; i < items.length; i++) {
-                  //    console.log(items[i]);
-                  //    this.slides.push(items[i]);
-                  //}
-
+                  //console.log(this.slides.length);
 
               }
           );
@@ -83,6 +95,7 @@ export class HomeFourComponent implements OnInit {
           .subscribe(
               (product: Product[]) => {
                   this.productsDiscountList = product
+                //  console.log(product);
               }
           );
       this.productService.getAllOldPopularProduct()
@@ -92,10 +105,44 @@ export class HomeFourComponent implements OnInit {
               }
           );
 
+      this.productService.getAllMostSoldProduct()
+          .subscribe(
+              (product: Product[]) => {
+                  this.productsMostSoldList = product
+              //    console.log(this.productsMostSoldList);
+              }
+          );
 
-
-
+      this.productService.getAllPreOrderProduct()
+          .subscribe(
+              (product: Product[]) => {
+                  this.productsPreOrderList = product
+               //   console.log(this.productsPreOrderList);
+              }
+          );
       
+        this.productService.getAllStationeryProduct()
+            .subscribe(
+                (product: Product[]) => {
+                    this.productsStationeryList = product
+                   console.log(this.productsStationeryList);
+                }
+            );
+        this.productService.getAllArtAndCraftProduct()
+            .subscribe(
+                (product: Product[]) => {
+                    this.productsArtAndCraftList = product
+                  //  console.log(this.productsArtAndCraftList);
+                }
+            );
+        this.productService.getAllOrgOrderProduct()
+            .subscribe(
+                (product: Product[]) => {
+                    this.productsOrgOrdertList = product
+                  //  console.log(this.productsOrgOrdertList);
+                }
+            );
+        
  this.currency = this.currencies[0];
   this.flag = this.flags[0];
 

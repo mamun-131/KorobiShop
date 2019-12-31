@@ -1,11 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/app/modals/product.model';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+
+import { Product, ProductAtrributes } from 'src/app/modals/product.model';
 import { ProductService } from 'src/app/components/shared/services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { CartService } from 'src/app/components/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
+import { ProductImage } from 'src/app/modals/productImage.model';
+import { ProductAttribute } from '../../../../modals/productAtrribute.model';
 
 
 @Component({
@@ -17,23 +20,102 @@ export class ProductDetailsComponent implements OnInit {
 
   public config: SwiperConfigInterface={};
 
-  @ViewChild('zoomViewer', { static: true }) zoomViewer;
-  @ViewChild(SwiperDirective, { static: true }) directiveRef: SwiperDirective;
+  @ViewChild('zoomViewer', { static: false }) zoomViewer;
+    @ViewChild(SwiperDirective, { static: true }) directiveRef: SwiperDirective;
+
+    myThumbnail = "https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg";
+    myFullresImage = "https://wittlock.github.io/ngx-image-zoom/assets/fullres.jpg";
 
   public product            :   Product = {};
   public products           :   Product[] = [];
-
+  public productPictures: ProductImage[];
+    public productAttributeTags: ProductAttribute[];
+    public productColor: string[] = [];
+    public productColortext: string[] = [];
+    public productCondition: string[] = [];
+    public productConditiontext: string[] = [];
+    public productSize: string[] = [];
+    public productSizetext: string[] = [];
+    public productMaterial: string[] = [];
+    public productMaterialtext: string[] = [];
+    public productDimension: string[] = [];
+    public productDimensiontext: string[] = [];
+    public productAge: string[] = [];
+    public productAgetext: string[] = [];
+    public productBrand: string[] = [];
+    public productBrandtext: string[] = [];
+  public thumbImage: any;
+  public fullImage: any;
   public image: any;
   public zoomImage: any;
 
-  public counter            :   number = 1;
+  public counter  :   number = 1;
 
   index: number;
 
   constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService) {
     this.route.params.subscribe(params => {
       const id = +params['id'];
-      this.productsService.getProduct(id).subscribe(product => this.product = product)
+        //this.productsService.getProduct(id).subscribe(product => this.product = product)
+        this.productsService.getProductPicturesById(id).subscribe(
+            (productPictures: ProductImage[]) => {
+                this.productPictures = productPictures;
+                this.thumbImage = productPictures[0].imagePath;
+                this.fullImage = productPictures[0].imagePath;
+                this.zoomImage = this.thumbImage;
+                console.log(productPictures);
+            }
+        );
+
+        this.productsService.getProducAttributeTagsById(id).subscribe(
+            (productAttributeTags: ProductAttribute[]) => {
+                this.productAttributeTags = productAttributeTags;
+                console.log(productAttributeTags);
+                for (var i = 0; i < productAttributeTags.length; i++) {
+                    if (this.productAttributeTags[i].product_attribute == 'Color') {
+
+                        this.productColor.push(this.productAttributeTags[i].attribute_value);
+                        this.productColortext.push (this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Condition') {
+                        this.productCondition.push(this.productAttributeTags[i].attribute_value);
+                        this.productConditiontext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Size') {
+                        this.productSize.push(this.productAttributeTags[i].attribute_value);
+                        this.productSizetext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Material') {
+                        this.productMaterial.push(this.productAttributeTags[i].attribute_value);
+                        this.productMaterialtext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Dimension') {
+                        this.productDimension.push(this.productAttributeTags[i].attribute_value);
+                        this.productDimensiontext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Age') {
+                        this.productAge.push(this.productAttributeTags[i].attribute_value);
+                        this.productAgetext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                    if (this.productAttributeTags[i].product_attribute == 'Brand') {
+                        this.productBrand.push(this.productAttributeTags[i].attribute_value);
+                        this.productBrandtext.push(this.productAttributeTags[i].attribute_valuetext);
+                    }
+                }
+            }
+        );
+        
+
+        this.productsService.getProductById(id)
+            .subscribe(
+                (product: Product) => {
+                    this.product = product[0];
+                    //console.log(product);
+                }
+            );
+        //this.productsService.getProductById(id).subscribe(product => this.product = product);
+        console.log(id);
+
     });
    }
 
@@ -41,35 +123,48 @@ export class ProductDetailsComponent implements OnInit {
     this.productsService.getProducts().subscribe(product => this.products = product);
 
 
-    this.getRelatedProducts();
+      this.getRelatedProducts();
+
+      //console.log(this.product);
+      //console.log(this.productPictures);
   }
 
 
   ngAfterViewInit(){
-    this.config = {
-      observer: false,
-      slidesPerView: 4,
-      spaceBetween: 10,
-      keyboard: true,
-      navigation: true,
-      pagination: false,
-      loop: false,
-      preloadImages: false,
-      lazy: true,
-      breakpoints: {
-        480: {
-          slidesPerView: 2
-        },
-        600: {
+      this.config = {
+          observer: true,
           slidesPerView: 3,
-        }
+          spaceBetween: 16,
+          keyboard: true,
+          navigation: true,
+          pagination: false,
+          grabCursor: true,
+          loop: true,
+          preloadImages: false,
+          lazy: true,
+          breakpoints: {
+              480: {
+                  slidesPerView: 1
+              },
+              740: {
+                  slidesPerView: 2,
+              },
+              960: {
+                  slidesPerView: 3,
+              },
+              1280: {
+                  slidesPerView: 4,
+              },
+
+
+          }
       }
-    }
   }
 
   public selectImage(image){
-    this.image = image.medium;
-    this.zoomImage = image.big;
+      this.thumbImage = image;
+      this.fullImage = image;
+      this.zoomImage = image;
   }
 
 
@@ -115,7 +210,8 @@ getRelatedProducts() {
     offsetX = e.offsetX;
     offsetY = e.offsetY;
     x = offsetX/image.offsetWidth*100;
-    y = offsetY/image.offsetHeight*100;
+      y = offsetY / image.offsetHeight * 100;
+
     zoomer = this.zoomViewer.nativeElement.children[0];
     if(zoomer){
       zoomer.style.backgroundPosition = x + '% ' + y + '%';
@@ -130,10 +226,18 @@ public onMouseLeave(event){
   this.zoomViewer.nativeElement.children[0].style.display = "none";
 }
 
-public openZoomViewer(){
-  this.dialog.open(ProductZoomComponent, {
-    data: this.zoomImage,
-    panelClass: 'zoom-dialog'
+    public openZoomViewer() {
+        console.log(this.zoomImage);
+    this.dialog.open(ProductZoomComponent, {
+
+        data: this.zoomImage,
+        //maxWidth: '90vw',
+        maxHeight: '90vh',
+        height: '90%',
+        //width: '90%',
+        
+        panelClass: 'full-screen-modal'
+    //panelClass: 'zoom-dialog'
   });
 }
 

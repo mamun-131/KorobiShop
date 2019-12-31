@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Inject } from '@angular/core';
-import { MainCarousel } from '../../../modals/main-carousel.model';
+import { MainCarousel } from 'src/app/modals/main-carousel.model';
+import { Banners } from 'src/app/modals/banners.model';
 
 @Injectable({
     providedIn: 'root'
@@ -43,6 +44,16 @@ export class AppCarouselService {
             )
     }
 
+    getAllBanners(): Observable<Banners> {
+        //console.log(this.baseUrl);
+        return this.http.get<Banners>('api/GetAllBanners/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    
 
     //// GET
     //GetIssue(id): Observable<Bug> {

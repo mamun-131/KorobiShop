@@ -1,10 +1,20 @@
 <div class="controls">
-  <button mat-mini-fab color="primary" class="zoom-in" (click)="zoomIn()"><mat-icon>zoom_in</mat-icon></button>
-  <button mat-mini-fab color="primary" class="zoom-out" (click)="zoomOut()"><mat-icon>zoom_out</mat-icon></button>
-  <button mat-mini-fab color="warn" class="close" (click)="close()"><mat-icon>close</mat-icon></button>
+  <!--<button mat-mini-fab color="primary" class="zoom-in" (click)="zoomIn()"><mat-icon>zoom_in</mat-icon></button>
+  <button mat-mini-fab color="primary" class="zoom-out" (click)="zoomOut()"><mat-icon>zoom_out</mat-icon></button>-->
+  <a mat-flat-button class="close" (click)="close()"><mat-icon>close</mat-icon></a>
 </div>
-<div mat-dialog-content>
-  <div class="viewer">
-      <img [src]="product.pictures" #zoomImage>
+<div >
+  <div >
+    <!--<img [src]="image" #zoomImage>-->
+    <ngx-image-zoom [thumbImage]=image
+                    [fullImage]=image
+                    [magnification]="1.4"
+                    [enableScrollZoom]="true"
+                    [enableLens]="true"
+                    [circularLens]="true"
+                    [lensWidth]="150"
+                    [lensHeight]="150"
+                    #zoomImage
+                    ></ngx-image-zoom>
   </div>
 </div>

@@ -74,7 +74,8 @@ import { HomeFiveComponent } from './home-five/home-five.component';
   ],
 
   entryComponents:[
-    ProductDialogComponent
+      ProductDialogComponent,
+      ProductZoomComponent
   ],
 })
 

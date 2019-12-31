@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewEncapsulation, ViewChild } from '@angula
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProductService } from 'src/app/components/shared/services/product.service';
 import { Product } from 'src/app/modals/product.model';
+import { ProductImage } from '../../../../../modals/productImage.model';
 
 @Component({
   selector: 'app-product-zoom',
@@ -12,15 +13,25 @@ import { Product } from 'src/app/modals/product.model';
 export class ProductZoomComponent implements OnInit {
   public product            :   Product = {};
   public products           :   Product[] = [];
-
+    public productPictures: ProductImage[];
   @ViewChild('zoomImage', { static: true }) zoomImage;
 
   constructor( private productsService: ProductService, public dialogRef: MatDialogRef<ProductZoomComponent>,
               @Inject(MAT_DIALOG_DATA) public image:any) { }
 
-  ngOnInit() {
+    ngOnInit() {
+        console.log(this.zoomImage);
 
-    this.productsService.getProducts().subscribe(product => this.products = product);
+      //this.productsService.getProducts().subscribe(product => this.products = product);
+
+      //this.productsService.getProductPicturesById(id).subscribe(
+      //    (productPictures: ProductImage[]) => {
+      //        this.productPictures = productPictures;
+      //        //this.thumbImage = productPictures[0].imagePath;
+      //        //this.fullImage = productPictures[0].imagePath;
+      //        console.log(productPictures);
+      //    }
+      //);
   }
 
   public close(): void {

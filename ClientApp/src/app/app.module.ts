@@ -14,7 +14,10 @@ import { MainComponent } from './components/main/main.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './components/shared/shared.module';
+//import { PagesModule } from './components/pages/pages.module';
 import { ShopModule } from './components/shop/shop.module';
+
+
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -36,7 +39,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
   imports: [
       BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
       SharedModule,
+      //PagesModule,
       ShopModule,
+
     HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
