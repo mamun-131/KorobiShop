@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -38,22 +39,34 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\app.service.ts" />
     <None Remove="ClientApp\src\app\components\main\main.component.ts" />
     <None Remove="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <None Remove="ClientApp\src\app\components\shared\shared.module.ts" />
+    <None Remove="ClientApp\src\app\components\shared\user-menu\user-menu.component.ts" />
+    <None Remove="ClientApp\src\app\components\user\user-profile\user-profile.component.ts" />
     <None Remove="ClientApp\src\app\modals\banners.model.ts" />
     <None Remove="ClientApp\src\app\modals\main-carousel.model.ts" />
     <None Remove="ClientApp\src\app\modals\menuTagMap.model.ts" />
     <None Remove="ClientApp\src\app\modals\productAtrribute.model.ts" />
     <None Remove="ClientApp\src\app\modals\productImage.model.ts" />
+    <None Remove="ClientApp\src\app\modals\user-profile.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\main\main.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\shared\services\carousel.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\shared\shared.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\shared\user-menu\user-menu.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\user\user-profile\user-profile.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\modals\banners.model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\modals\user-profile.model.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\modals\menuTagMap.model.ts" />

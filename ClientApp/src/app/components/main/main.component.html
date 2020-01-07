@@ -77,7 +77,7 @@
         </div>
       </div>
       <div *ngIf="!isSearchVisible" class="info-message-icon" fxLayout="column" fxLayoutAlign="center center">
-        <a [routerLink]="['/home/four']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/korboi-3000.png"></a>
+        <a [routerLink]="['/home/four']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/Korobi-08.png"></a>
       </div>
 
 
@@ -110,7 +110,7 @@
 
           <app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>
           <!--<app-shopping-widgets [shoppingCartItems]="shoppingCartItems"></app-shopping-widgets>-->
-          <span><a class="navbar-link" [routerLink]="['/counter']"><mat-icon class="mat-icon-lg mat-icon material-icons">account_circle</mat-icon></a></span>
+          <span><a class="navbar-link" [routerLink]="['/pages/my-account']"><mat-icon class="mat-icon-lg mat-icon material-icons">account_circle</mat-icon></a></span>
         </div>
       </div>
     </span>
@@ -120,7 +120,7 @@
 
     <div class="container" fxHide fxShow.gt-sm fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
       <div class="logo">
-        <a fxHide fxShow.gt-sm [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/korboi-3000.png"></a>
+        <a fxHide fxShow.gt-sm [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/Korobi-08.png"></a>
       </div>
       <div fxflexoffset.gt-sm="10" fxFlex class="search-form">
         <form class="search-form" fxLayout="row">
@@ -169,8 +169,7 @@
 
           <div class="info-message-icon" fxLayout="row" fxLayoutAlign="space-between  center">
             <!--<button mat-mini-fab color="basic"><a class="navbar-link" [routerLink]="['/counter']"><i class="fa fa-user"></i></a> </button>-->
-            <span><a class="navbar-link" [routerLink]="['/counter']">  <mat-icon class="mat-icon-lg mat-icon material-icons" fxLayoutAlign="center center">account_circle</mat-icon></a></span>
-
+            <span><a><app-user-menu [nameM]="nameM"></app-user-menu> </a></span> 
           </div>
         </div>
 

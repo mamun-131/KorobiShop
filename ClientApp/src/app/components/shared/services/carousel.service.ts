@@ -36,7 +36,7 @@ export class AppCarouselService {
 
     // GET ALL
     getAllMain_carousel(): Observable<MainCarousel> {
-        //console.log(this.baseUrl);
+        console.log(this.baseUrl);
         return this.http.get<MainCarousel>( 'api/GetAllMain_carousel/')
             .pipe(
                 retry(1),

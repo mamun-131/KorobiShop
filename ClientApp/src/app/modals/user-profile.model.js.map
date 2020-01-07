@@ -1,0 +1,1 @@
+{"version":3,"file":"user-profile.model.js","sourceRoot":"","sources":["user-profile.model.ts"],"names":[],"mappings":";;AACA;IAKI,qBACI,QAAiB,EACjB,KAAc,EACd,QAAiB;QAEjB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QACzB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;QACnB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAE7B,CAAC;IAEL,kBAAC;AAAD,CAAC,AAhBD,IAgBC;AAhBY,kCAAW"}

@@ -32,6 +32,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { AppCarouselService } from './services/carousel.service';
 import { ProductService } from './services/product.service';
 import { CartService } from './services/cart.service';
+import { UserService } from './services/user.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BannersComponent } from './banners/banners.component';
 //import { HeaderTwoComponent } from './header-two/header-two.component';
@@ -44,6 +45,7 @@ import { BannerPromotionComponent } from './banner-promotion/banner-promotion.co
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { CategoriesSectionComponent } from './categories-section/categories-section.component';
 //import { FooterTwoComponent } from './footer-two/footer-two.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 
 
@@ -64,7 +66,8 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
         //HeaderFourComponent,
         CategoriesMenuComponent,
         CategoriesSectionComponent,
-        //FooterTwoComponent
+        //FooterTwoComponent,
+        UserMenuComponent
     ],
     imports: [
         CommonModule,
@@ -130,13 +133,15 @@ import { CategoriesSectionComponent } from './categories-section/categories-sect
         BannerPromotionComponent,
         CategoriesMenuComponent,
         CategoriesSectionComponent,
-        //FooterTwoComponent
+        //FooterTwoComponent,
+        UserMenuComponent
 
     ],
     providers: [
         ProductService,
         CartService,
-        AppCarouselService
+        AppCarouselService,
+        UserService
     ]
 })
 export class SharedModule { }

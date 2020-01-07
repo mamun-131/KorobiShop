@@ -5,7 +5,9 @@ import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
 import { Product } from 'src/app/modals/product.model';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../shared/services/cart.service';
-
+import { UserService } from '../shared/services/user.service';
+import { Observable } from 'rxjs';
+import { AppService } from '../../app.service';
 
 @Component({
     selector: 'app-main',
@@ -19,17 +21,31 @@ export class MainComponent implements OnInit {
     products: Product[];
     indexProduct: number;
     shoppingCartItems: CartItem[] = [];
+    nameM: string;
+    nameN: string;
+    subscription;
+    constructor(public router: Router, public sidenavMenuService: SidebarMenuService,
+        private cartService: CartService, private userService: UserService, private appService: AppService) {
 
-    constructor(public router: Router, public sidenavMenuService: SidebarMenuService, private cartService: CartService) {
+      //  this.nameM = this.userService.currentLoginStatus;
+      //  console.log(this.nameM);
         this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 this.url = event.url;
             }
-        })
+        });
+
+ 
     }
 
-    ngOnInit() { }
+    ngOnInit(): void {
+
+       
+        this.appService.getST().subscribe(res => {
+            this.nameM = res;
+        });
+ }
 
     public banners = [];
     isSearchVisible = false;
