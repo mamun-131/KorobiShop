@@ -1,5 +1,26 @@
 <app-main-carousel [slides]="slides"></app-main-carousel>
+
+
+
+
 <div class="home-1-wrap">
+  <div *ngFor="let item of productTopCarouselList">
+  
+    <app-product-top-carousel *ngIf="item.type === 'c'" [productTopCarouselList]="item" [product]="productTopCarouselDataList[item.typeSl-1]"></app-product-top-carousel>
+
+    <div class="main-banner" *ngIf="item.type === 'b'">
+      <app-banners-four [bannerNumber]="item.typeSl" [banners]="banners"></app-banners-four>
+    </div>
+
+
+  </div>
+ 
+</div>
+
+
+
+
+<!--<div class="home-1-wrap">
 
   <div class="container">
     <div class="products sec-padding">
@@ -124,25 +145,22 @@
 
 
   <div class="main-banner">
-    <app-banners-four  [bannerNumber]="1" [banners]="banners"></app-banners-four>
-  </div>
-
-
-  <!--<div class="container">
-    <app-product-vertical [products]="products"></app-product-vertical>
+    <app-banners-four [bannerNumber]="1" [banners]="banners"></app-banners-four>
   </div>-->
-  <!--<div class="blog-section sec-padding">
-    <div class="container">
-      <div class="section-title">
-        <h3>Latest From Our Blog</h3>
-        <p>
-          Business analytics (BA) is the practice of iterative, methodical exploration of an<br>
-          organization's data with emphasis on statistical analysis.
-        </p>
-      </div>
-
-      <app-blog-section></app-blog-section>
+<!--</div>-->
+<!--<div class="container">
+  <app-product-vertical [products]="products"></app-product-vertical>
+</div>-->
+<!--<div class="blog-section sec-padding">
+  <div class="container">
+    <div class="section-title">
+      <h3>Latest From Our Blog</h3>
+      <p>
+        Business analytics (BA) is the practice of iterative, methodical exploration of an<br>
+        organization's data with emphasis on statistical analysis.
+      </p>
     </div>
-  </div>-->
 
-</div>
+    <app-blog-section></app-blog-section>
+  </div>
+</div>-->

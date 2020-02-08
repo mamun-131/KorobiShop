@@ -48,6 +48,9 @@ namespace KorobiShop.Models
 
 
     }
+
+   
+
     public class ProductTags
     {
         public int id { get; set; }

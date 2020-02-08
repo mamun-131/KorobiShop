@@ -21,6 +21,9 @@ import { HomeThreeComponent } from './home-three/home-three.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 import { ProductCarouselComponent } from './../shop/home-four/product-carousel/product-carousel.component';
+import { ProductTopCarouselComponent } from './../shop/home-four/product-top-carousel/product-top-carousel.component';
+
+
 import { from } from 'rxjs';
 import { ProductCarouselTwoComponent } from './home-two/product-carousel-two/product-carousel-two.component';
 import { ProductCarouselThreeComponent } from './home-three/product-carousel-three/product-carousel-three.component';
@@ -30,7 +33,7 @@ import { PopularProductsComponent } from './widgets/popular-products/popular-pro
 import { HomeFourComponent } from './home-four/home-four.component';
 import { ProductZoomComponent } from './products/product-details/product-zoom/product-zoom.component';
 import { HomeFiveComponent } from './home-five/home-five.component';
-
+import { MenuExtensionComponent} from './menu-extension/menu-extension.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +48,7 @@ import { HomeFiveComponent } from './home-five/home-five.component';
     ProductVerticalComponent,
     HomeTwoComponent,
     HomeThreeComponent,
-
+        ProductTopCarouselComponent,
     ProductCarouselComponent,
     ProductCarouselTwoComponent,
     ProductCarouselThreeComponent,
@@ -54,7 +57,8 @@ import { HomeFiveComponent } from './home-five/home-five.component';
     PopularProductsComponent,
     HomeFourComponent,
     ProductZoomComponent,
-    HomeFiveComponent,
+        HomeFiveComponent,
+        MenuExtensionComponent
   ],
   imports: [
     CommonModule,

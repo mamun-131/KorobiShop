@@ -4,6 +4,7 @@ import { ProductService } from '../../shared/services/product.service';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../shared/services/cart.service';
 import { AppCarouselService } from '../../shared/services/carousel.service';
+import { FirstPageCarouselSerial } from '../../../modals/FirstPageCarouselSerial.model';
 
 
 @Component({
@@ -40,8 +41,19 @@ export class HomeFourComponent implements OnInit {
   shoppingCartItems: CartItem[] = [];
     wishlistItems: Product[] = [];
     discount: string = "discount";
+    productTopCarouselDataList: [Product[]] = [[]];
+    productTopCarouselList = [];
+    //productTopCarouselList: any = [
+    //    { mainSlno: 0, typeSl: 1, caption: 'পুরাতন জনপ্রিয় বই', type: 'c', routerlink: '' },
+    //    { mainSlno: 1, typeSl: 0, caption: 'বিশেষ ছাড়', type: 'c', routerlink:''},
+        
+    //    { mainSlno: 2, typeSl: 0, caption: 'Banner', type: 'b', routerlink: '' },
+       
 
 
+    //    { mainSlno: 3, typeSl: 1, caption: 'Banner', type: 'b', routerlink: '' },
+    //    { mainSlno: 4, typeSl: 2, caption: 'সর্বাধিক বিক্রিত পণ্য', type: 'c', routerlink: '' },
+    //];
   //public slides = [
   //    //{ title: 'ইসলামিক বই এ', subtitle: ' ৪০% ছাড়', description: 'সুযোগ ফুরিয়ে যাওয়ার আগে ঝাঁপিয়ে পড়ুন ', image: 'assets/images/carousel/islamikbook1.png' },
   //    //{ title: 'হুমায়ুন আহমেদ এর বই এ', subtitle: '২০% ছাড়', description: 'সুযোগ ফুরিয়ে যাওয়ার আগে ঝাঁপিয়ে পড়ুন ', image: 'assets/images/carousel/humayun-ahmed.png' },
@@ -58,12 +70,22 @@ export class HomeFourComponent implements OnInit {
 
     ngOnInit() {
 
-        
+        //for (var i = 0; i < this.productTopCarouselList.length; i++) {
+        //    console.log(this.productTopCarouselList[i].caption)
+        //    if (this.productTopCarouselList[i].type == 'c') {
+        //       // this.productTopCarouselDataList= this.productsDiscountList;
+        //    }
+        //    //else {
+        //    //    this.productTopCarouselDataList[i] = this.banners[this.productTopCarouselList[i].typeSl];
+        //    //}
+           
+        //}
 
     //this.productService.getBanners()
     //.subscribe(
     //  data => this.banners = data
     //);
+        
 
 
         this.appCarouselService.getAllBanners()
@@ -81,7 +103,40 @@ export class HomeFourComponent implements OnInit {
                   //console.log(this.slides.length);
 
               }
-          );
+        );
+
+
+        this.appCarouselService.getFirstPageCarouselSerial()
+            .subscribe(
+                (items1: any) => {
+
+                    this.productTopCarouselList = items1;
+                    console.log(this.productTopCarouselList);
+
+          
+
+        this.appCarouselService.getAllFirstPageCarouselDisplay()
+            .subscribe(
+                (items: Product[]) => {
+
+                    for (var i = 0; i < items1.length; i++) {
+                        this.productTopCarouselDataList.splice(i, 0, items.filter(res => res.cId === i+1))
+                    }
+                    console.log(this.productTopCarouselDataList);
+                    console.log(items);
+                    console.log(items.filter(res => res.cId === 1));
+
+                }
+            );
+              
+
+                }
+        );
+
+
+
+
+
 
       this.productService.getProducts()
           .subscribe(
@@ -91,58 +146,7 @@ export class HomeFourComponent implements OnInit {
           );
 
 
-      this.productService.getAllDiscountProduct()
-          .subscribe(
-              (product: Product[]) => {
-                  this.productsDiscountList = product
-                //  console.log(product);
-              }
-          );
-      this.productService.getAllOldPopularProduct()
-          .subscribe(
-              (product: Product[]) => {
-                  this.productsOldBookList = product
-              }
-          );
 
-      this.productService.getAllMostSoldProduct()
-          .subscribe(
-              (product: Product[]) => {
-                  this.productsMostSoldList = product
-              //    console.log(this.productsMostSoldList);
-              }
-          );
-
-      this.productService.getAllPreOrderProduct()
-          .subscribe(
-              (product: Product[]) => {
-                  this.productsPreOrderList = product
-               //   console.log(this.productsPreOrderList);
-              }
-          );
-      
-        this.productService.getAllStationeryProduct()
-            .subscribe(
-                (product: Product[]) => {
-                    this.productsStationeryList = product
-                   console.log(this.productsStationeryList);
-                }
-            );
-        this.productService.getAllArtAndCraftProduct()
-            .subscribe(
-                (product: Product[]) => {
-                    this.productsArtAndCraftList = product
-                  //  console.log(this.productsArtAndCraftList);
-                }
-            );
-        this.productService.getAllOrgOrderProduct()
-            .subscribe(
-                (product: Product[]) => {
-                    this.productsOrgOrdertList = product
-                  //  console.log(this.productsOrgOrdertList);
-                }
-            );
-        
  this.currency = this.currencies[0];
   this.flag = this.flags[0];
 
@@ -161,3 +165,75 @@ public changeLang(flag){
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //this.productService.getAllDiscountProduct()
+      //    .subscribe(
+      //        (product: Product[]) => {
+      //            this.productsDiscountList = product
+      //          //  this.productTopCarouselDataList.splice(0,0,product);
+      //           // array.splice(2, 0, "three");
+      //           console.log(product);
+      //        }
+      //    );
+      //this.productService.getAllOldPopularProduct()
+      //    .subscribe(
+      //        (product: Product[]) => {
+      //            this.productsOldBookList = product;
+      //        //    this.productTopCarouselDataList.splice(1, 0, product);
+      //        }
+      //    );
+
+      //this.productService.getAllMostSoldProduct()
+      //    .subscribe(
+      //        (product: Product[]) => {
+      //            this.productsMostSoldList = product;
+      //       //     this.productTopCarouselDataList.splice(2, 0, product);
+      //        //    console.log(this.productsMostSoldList);
+      //        }
+      //    );
+
+      //this.productService.getAllPreOrderProduct()
+      //    .subscribe(
+      //        (product: Product[]) => {
+      //            this.productsPreOrderList = product;
+      //         //   this.productTopCarouselDataList.splice(3, 0, product);
+      //         //   console.log(this.productsPreOrderList);
+      //        }
+      //    );
+
+      //  this.productService.getAllStationeryProduct()
+      //      .subscribe(
+      //          (product: Product[]) => {
+      //              this.productsStationeryList = product;
+      //          //    this.productTopCarouselDataList.splice(4, 0, product);
+      //             console.log(this.productsStationeryList);
+      //          }
+      //      );
+      //  this.productService.getAllArtAndCraftProduct()
+      //      .subscribe(
+      //          (product: Product[]) => {
+      //              this.productsArtAndCraftList = product;
+      //          //    this.productTopCarouselDataList.splice(5, 0, product);
+      //            //  console.log(this.productsArtAndCraftList);
+      //          }
+      //      );
+      //  this.productService.getAllOrgOrderProduct()
+      //      .subscribe(
+      //          (product: Product[]) => {
+      //              this.productsOrgOrdertList = product;
+      //         //     this.productTopCarouselDataList.splice(6, 0, product);
+      //            //  console.log(this.productsOrgOrdertList);
+      //          }
+      //      );

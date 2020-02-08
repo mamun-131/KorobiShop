@@ -16,7 +16,11 @@ namespace KorobiShop.Context
         public DbSet<Product_image> product_image { get; set; }
 
         public DbSet<Menu_tag_map> menu_tag_map { get; set; }
-        
+        public DbSet<FirstPageCarouselSerial> firstPageCarouselSerial { get; set; }
+        public DbSet<FirstPageCarouselProducts> firstPageCarouselProducts { get; set; }
+        public DbSet<WriterList> writerList { get; set; }
+        public DbSet<PublisherList> publisherList { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> context) : base(context)
         {
             // "MyTasteDatabase": "Server=DESKTOP-K0O55OV\\SQLEXPRESS;Database=TasteDatabase;Trusted_Connection=True;"

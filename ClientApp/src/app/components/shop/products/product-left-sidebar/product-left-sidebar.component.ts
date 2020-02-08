@@ -25,7 +25,7 @@ export class ProductLeftSidebarComponent implements OnInit {
   public products: Product[] = [];
   public tags         :   any[] = [];
     public colors: any[] = [];
-    public menuTagMap: MenuTagMap;
+    public menuTagMap: MenuTagMap ;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) {
     this.route.params.subscribe(
@@ -36,24 +36,102 @@ export class ProductLeftSidebarComponent implements OnInit {
             //var substrcat = category.substring(0, 9);
             //var catid = category.substring(9, strlength);
             //console.log(strlength);
-            //console.log(substrcat);
-
-            console.log(category);
+            if (category.length > 5) {
+            console.log(category.substr(0, 6));
+            }
+            console.log('category' + category);
+            console.log('category>>>>' + category.charAt(0));
             if (category.charAt(0) == '-') {
                 this.productService.getMenuTagMapById("'" + category + "'").subscribe(cat => {
                     this.menuTagMap = cat;
                     console.log(this.menuTagMap[0]);
-                    if (this.menuTagMap[0].tagType == 'Category') {
-                        this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
-                            this.allItems = products;
-                            this.products = products.slice(0.8);
-                            console.log(products);
+                    console.log('length' + this.menuTagMap);
+                    if (this.menuTagMap) {
+                        if (this.menuTagMap[0].tagType == 'Category') {
 
-                        });
+
+
+                            if (category == '-1-0' || category == '-3-0' || category == '-4-0' || category == '-2-0' || category == '-5-0' || category == '-6-0' || category == '-7-0') {
+                                console.log('%%%%%' + this.menuTagMap[0].tagValue);
+
+                                this.productService.getAllSpecialSalesProduct(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
+                                    this.allItems = products;
+                                    //this.products = products.slice(0.8);
+                                    console.log(products);
+
+                                });
+                            }
+                            else {
+                                this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
+                                    this.allItems = products;
+                                    // this.products = products.slice(0.8);
+                                    console.log(products);
+
+                                });
+                            }
+
+
+                        }
+                        else if (this.menuTagMap[0].tagType == 'ProductTag-Condition-Old-Old') {
+                            this.productService.getAllAttributeTagProduct('Condition-Old-Old-' + this.menuTagMap[0].tagValue).subscribe(products => {
+                                this.allItems = products;
+                                // this.products = products.slice(0.8);
+                                console.log('>>>>>ProductTag-Condition-Old-Old');
+                                console.log(products);
+
+                            });
+                        }
+
                     }
+
 
                 });
 
+            }
+            else if (category.substr(0,6) == 'writer') {
+                console.log('writer>>>>' + category.substr(6, category.length));
+                this.productService.getProductByWriter(Number(category.substr(6, category.length))).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
+            }
+            else if (category.substr(0,6) == '-morew') {
+                console.log('writer>>>>' + category.substr(6, category.length));
+                this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
+            }
+            else if (category.substr(0, 9) == 'publisher') {
+                console.log('publisher>>>>' + category.substr(9, category.length));
+                this.productService.getProductByPublisher(Number(category.substr(9, category.length))).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
+            }
+            else if (category.substr(0, 6) == '-morep') {
+                console.log('publisher>>>>' + category.substr(6, category.length));
+                this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
+            }
+            else if (category.substr(0, 6) == 'search') {
+                console.log('search>>>>' + category.substr(6, category.length));
+                this.productService.getProductBySearch(category.substr(6, category.length)).subscribe(products => {
+                    this.allItems = products;
+                    this.products = products.slice(0.8);
+                    console.log(products);
+
+                });
             }
             else {
                 this.productService.getProductByCategoryId(Number(category)).subscribe(products => {

@@ -4,7 +4,7 @@
 <mat-toolbar-row class="container" fxHide fxShow.gt-sm fxLayoutAlign="space-between start">
   <!--<div class="main-menu" fxHide fxShow.gt-sm  style=" background-color:palevioletred; width:100%;position:center;">  -->
 
-  <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu main-menu" [color]="'warn'" (mousedown)="menuRouting($event, menuIndex)" (mouseleave)="allSelectedIndexZero();" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[0]">
+  <mat-tab-group  dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu main-menu" [color]="'warn'" (mousedown)="menuRouting($event, menuIndex)" (mouseleave)="allSelectedIndexZero();" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[0]">
     <mat-tab mat-button label="করবী">
       <!--<div class="example-small-box mat-elevation-z4">
         Small content
@@ -14,7 +14,7 @@
       <!--<a [routerLink]="['/home/products/all']" routerLinkActive="router-link-active" mat-button class="mat-button">Products</a>-->
       <!--<div style="background-color: whitesmoke;box-sizing:border-box;height:50%;width:100%;position: center;">-->
 
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[1]">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu"  (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[1]">
 
         <mat-tab label="বিশেষ ছাড়">
         </mat-tab>
@@ -49,30 +49,41 @@
         </mat-tab>
         <mat-tab label="লেখক">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">হুমায়ুন আহমেদ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">মুহম্মদ জাফর ইকবাল</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">সৈয়দ শামসুল হক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">জহির রায়হান</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">সমরেশ মজুমদার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">More...</a></mat-grid-tile>
+            <div *ngFor="let item of writerList; let i = index">
+              <mat-grid-tile *ngIf="i < 23"><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/writer' + item.id]">{{item.name}}</a></mat-grid-tile>
+
+            </div>
+            <!--<mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">মুহম্মদ জাফর ইকবাল</a></mat-grid-tile>
+          <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">সৈয়দ শামসুল হক</a></mat-grid-tile>
+          <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">জহির রায়হান</a></mat-grid-tile>
+          <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">সমরেশ মজুমদার</a></mat-grid-tile>-->
+            <!--<mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/menu-extension/writer']">More...</a></mat-grid-tile>-->
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/-morew']">More...</a></mat-grid-tile>
+
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="প্রকাশনী">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">অন্যপ্রকাশ	অন্যপ্রকাশ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">বাংলা একাডেমি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">বাতিঘর প্রকাশনী</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">ইসলামিক ফাউন্ডেশন</a></mat-grid-tile>
+            <div *ngFor="let item of publisherList; let i = index">
+              <mat-grid-tile *ngIf="i < 23"><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/publishermore' + item.id]">{{item.name}}</a></mat-grid-tile>
+
+            </div>
+            <!--<mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">অন্যপ্রকাশ	অন্যপ্রকাশ</a></mat-grid-tile>
+  <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">বাংলা একাডেমি</a></mat-grid-tile>
+  <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">বাতিঘর প্রকাশনী</a></mat-grid-tile>
+  <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/বই']">ইসলামিক ফাউন্ডেশন</a></mat-grid-tile>-->
+
+            <mat-grid-tile><a mat-menu-item style="width:auto;" [routerLink]="['/home/products/-morep']">More...</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="প্যাকেজ">
-          <!--<div class="example-large-box mat-elevation-z4">
+          <!--<div class="example-large-box mat-elevation-z4">dfdfd
             Large content
           </div>-->
         </mat-tab>
         <mat-tab label="জনপ্রিয় বই">
           <!--<div class="example-large-box mat-elevation-z4">
-            Large content
+            Large contentx
           </div>-->
         </mat-tab>
         <mat-tab label="নতুন প্রকাশিত বই">
@@ -94,42 +105,43 @@
 
       <!--</div>-->
     </mat-tab>
-    <mat-tab mat-button label="পুরাতন বই">
+    <!--<mat-tab mat-button label="পুরাতন বই">
 
-    </mat-tab>
+    </mat-tab>-->
 
     <mat-tab mat-button label="ইলেকট্রনিক্স">
       <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[2]">
+          <mat-tab label="বিশেষ ছাড়">
+          </mat-tab>
+          <mat-tab label="কম্পিউটার">
+            <mat-grid-list cols="6" rowHeight="6:1">
+              <!--<mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/-com-15100']">বিশেষ ছাড়</a></mat-grid-tile>-->
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15101']">পেন ড্রাইভ</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15102']">কি বোর্ড</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15103']">মাউস ও মাউস প্যাড</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15104']">পোর্টেবল হার্ডডিস্ক</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15105']">হেডফোন</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15106']">USB হাব</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15107']">লেসার টোনার</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15108']">লেসার টোনার ইংক</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15109']">কার্টিজ ইংক</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15110']">ক্যাবল</a></mat-grid-tile>
+            </mat-grid-list>
+          </mat-tab>
 
-        <mat-tab label="কম্পিউটার">
-          <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">বিশেষ ছাড়</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15101']">পেন ড্রাইভ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15102']">কি বোর্ড</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15103']">মাউস ও মাউস প্যাড</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15104']">পোর্টেবল হার্ডডিস্ক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15105']">হেডফোন</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15106']">USB হাব</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15107']">লেসার টোনার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15108']">লেসার টোনার ইংক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15109']">কার্টিজ ইংক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15110']">ক্যাবল</a></mat-grid-tile>
-          </mat-grid-list>
-        </mat-tab>
-
-        <mat-tab label="মোবাইল সামগ্রী">
-          <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">বিশেষ ছাড়</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15201']">হেডফোন</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/15202']">এডাপ্টার </a></mat-grid-tile>
-          </mat-grid-list>
-        </mat-tab>
+          <mat-tab label="মোবাইল সামগ্রী">
+            <mat-grid-list cols="6" rowHeight="6:1">
+              <!--<mat-grid-tile><a mat-menu-item style="width:auto;" [routerLink]="['/home/products/-com-15200']">বিশেষ ছাড়</a></mat-grid-tile>-->
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15201']">হেডফোন</a></mat-grid-tile>
+              <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/15202']">এডাপ্টার </a></mat-grid-tile>
+            </mat-grid-list>
+          </mat-tab>
 
       </mat-tab-group>
     </mat-tab>
 
     <mat-tab label="স্টেশনারি">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[3]">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu"  (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[3]">
 
         <mat-tab label="বিশেষ ছাড়">
         </mat-tab>
@@ -139,11 +151,11 @@
         </mat-tab>
         <mat-tab label="পেপার, খাতা, নোটবুক & ডাইরি">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/20301']">পেপার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/20302']">খাতা</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/20303']">নোটবুক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/20304']">ডাইরি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="/">Filtering by product category</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"   [routerLink]="['/home/products/20301']">পেপার</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"    [routerLink]="['/home/products/20302']">খাতা</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"    [routerLink]="['/home/products/20303']">নোটবুক</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/20304']">ডাইরি</a></mat-grid-tile>
+            <!--<mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="/">Filtering by product category</a></mat-grid-tile>-->
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="লেখার উপকরণ">
@@ -159,7 +171,7 @@
       </mat-tab-group>
     </mat-tab>
     <mat-tab label="আর্ট & ক্রাফট">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[4]">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu"  (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[4]">
 
         <mat-tab label="বিশেষ ছাড়">
         </mat-tab>
@@ -167,23 +179,23 @@
         </mat-tab>
         <mat-tab label="পেপার">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25201']">গিফট কার্ড</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25202']">হ্যান্ডমেইড ডাইরি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25203']">বুক মার্ক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25204']">গিফট বক্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25205']">টিস্যু বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25201']">গিফট কার্ড</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25202']">হ্যান্ডমেইড ডাইরি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25203']">বুক মার্ক</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25204']">গিফট বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25205']">টিস্যু বক্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
 
         <mat-tab label="কাঠের পণ্য">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25301']">ডাইরি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25302']">গিফট বক্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25303']">নেইম প্লেট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25304']">টিস্যু বক্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25305']">গহনার বক্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25306']">ফ্রেম</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25307']">চাবির রিং</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25301']">ডাইরি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25302']">গিফট বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25303']">নেইম প্লেট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25304']">টিস্যু বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25305']">গহনার বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25306']">ফ্রেম</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25307']">চাবির রিং</a></mat-grid-tile>
 
           </mat-grid-list>
         </mat-tab>
@@ -191,9 +203,9 @@
         </mat-tab>
         <mat-tab label="মাটির তৈরি">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25501']">ফুলদানি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25502']">টি সেট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25503']">ওয়াল হেঙ্গিং</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25501']">ফুলদানি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25502']">টি সেট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25503']">ওয়াল হেঙ্গিং</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="কাঠের গহনা">
@@ -202,15 +214,15 @@
         </mat-tab>
         <mat-tab label="পুঁতির পণ্য">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25801']">ব্যাগ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25802']">টিস্যু বক্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25803']">ডর বেল</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25801']">ব্যাগ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25802']">টিস্যু বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25803']">ডর বেল</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="চামড়াজাত পণ্য">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25901']">ব্যাল্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/25902']">চাবির রিং</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25901']">ব্যাল্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/25902']">চাবির রিং</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
       </mat-tab-group>
@@ -219,60 +231,63 @@
     <!--<mat-tab label="ছেলেদের শপিং">-->
     <mat-tab label="ছেলে">
       <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[5]">
+
+        <mat-tab label="বিশেষ ছাড়">
+        </mat-tab>
         <mat-tab label="পোশাক">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30101']">টি-শার্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30102']">ড্রেস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30103']">জিন্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30104']">শার্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30105']">কোট এন্ড জ্যাকেট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30106']">প্যান্টস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30107']">আন্ডার গার্মেন্টস এন্ড শকস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30101']">টি-শার্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30102']">ড্রেস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30103']">জিন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30104']">শার্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30105']">কোট এন্ড জ্যাকেট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30106']">প্যান্টস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30107']">আন্ডার গার্মেন্টস এন্ড শকস</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="জুতা ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30201']">ডিজাইনার জুতা</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30202']">ড্রেস জুতা</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30203']">সেন্ডেল</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30204']">স্লিপার্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30205']">স্নিকার্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30201']">ডিজাইনার জুতা</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30202']">ড্রেস জুতা</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30203']">সেন্ডেল</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30204']">স্লিপার্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30205']">স্নিকার্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="জুয়েলারি এন্ড ওয়াচ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30301']">ওয়াচ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30302']">ওয়াচ বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30301']">ওয়াচ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30302']">ওয়াচ বক্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="বিউটি">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30401']">স্কিন কেয়ার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30402']">ফ্রাগ্রন্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30403']">বাথ এন্ড বডি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30404']">হেয়ার কেয়ার</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30401']">স্কিন কেয়ার</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30402']">ফ্রাগ্রন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30403']">বাথ এন্ড বডি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30404']">হেয়ার কেয়ার</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="ব্যাগ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30501']">ব্যাকপ্যাকস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30502']">বেল্ট ব্যাক এন্ড ফ্যানি প্যাক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30504']">স্ট্যাটাচ্যালস এন্ড টপ হ্যান্ডেল</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30505']">সোল্ডার ব্যাগ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30506']">ওয়ালেট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30501']">ব্যাকপ্যাকস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30502']">বেল্ট ব্যাক এন্ড ফ্যানি প্যাক</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30504']">স্ট্যাটাচ্যালস এন্ড টপ হ্যান্ডেল</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30505']">সোল্ডার ব্যাগ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30506']">ওয়ালেট</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="এক্সেসরিজ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30601']">বেল্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30602']">ক্যাপ, হ্যাট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30601']">বেল্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30602']">ক্যাপ, হ্যাট</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="চশমা">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30701']">সানগ্লাস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30702']">প্রেস্ক্রিপশন গ্লাসস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/30703']">লেন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30701']">সানগ্লাস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30702']">প্রেস্ক্রিপশন গ্লাসস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/30703']">লেন্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
       </mat-tab-group>
@@ -280,71 +295,77 @@
     <!--<mat-tab label="মেয়েদের শপিং">-->
     <mat-tab label="মেয়ে">
       <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[6]">
+
+        <mat-tab label="বিশেষ ছাড়">
+        </mat-tab>
         <mat-tab label="পোশাক">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35101']">ড্রেস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35102']">জিন্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35103']">শার্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35104']">কোট এন্ড জ্যাকেট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35105']">প্যান্টস এন্ড ল্যাগিনস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35106']">আন্ডার গার্মেন্টস এন্ড শকস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35101']">ড্রেস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35102']">জিন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35103']">শার্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35104']">কোট এন্ড জ্যাকেট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35105']">প্যান্টস এন্ড ল্যাগিনস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35106']">আন্ডার গার্মেন্টস এন্ড শকস</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="জুতা ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35201']">ডিজাইনার জুতা</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35202']">ড্রেস জুতা</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35203']">সেন্ডেল</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35204']">স্লিপার্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35201']">ডিজাইনার জুতা</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35202']">ড্রেস জুতা</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35203']">সেন্ডেল</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35204']">স্লিপার্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="জুয়েলারি এন্ড ওয়াচ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35301']">জুয়েলারি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35302']">ফাইন জুয়েলারি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35303']">ওয়াচ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35304']">জুয়েলারি এন্ড ওয়াচ বক্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35301']">জুয়েলারি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35302']">ফাইন জুয়েলারি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35303']">ওয়াচ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35304']">জুয়েলারি এন্ড ওয়াচ বক্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="বিউটি">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35401']">স্কিন কেয়ার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35402']">ফ্রাগ্রন্স</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35403']">মেকআপ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35404']">বাথ এন্ড বডি</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35405']">হেয়ার কেয়ার</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35406']">নেইলস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35407']">টুলস ব্রাসেস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35401']">স্কিন কেয়ার</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35402']">ফ্রাগ্রন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35403']">মেকআপ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35404']">বাথ এন্ড বডি</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35405']">হেয়ার কেয়ার</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35406']">নেইলস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35407']">টুলস ব্রাসেস</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="ব্যাগ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35501']">ব্যাকপ্যাকস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35502']">বেল্ট ব্যাক এন্ড ফ্যানি প্যাক</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35503']">ক্রসবোডি ব্যাগ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35504']">স্ট্যাটাচ্যালস এন্ড টপ হ্যান্ডেল</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35505']">সোল্ডার ব্যাগ</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35506']">Totes</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35507']">রিচলেটস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35501']">ব্যাকপ্যাকস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35502']">বেল্ট ব্যাক এন্ড ফ্যানি প্যাক</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35503']">ক্রসবোডি ব্যাগ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35504']">স্ট্যাটাচ্যালস এন্ড টপ হ্যান্ডেল</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35505']">সোল্ডার ব্যাগ</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35506']">Totes</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35507']">রিচলেটস</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="এক্সেসরিজ">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35351']">বেল্ট</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35352']">ক্যাপ, হ্যাট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35351']">বেল্ট</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35352']">ক্যাপ, হ্যাট</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
         <mat-tab label="চশমা">
           <mat-grid-list cols="6" rowHeight="6:1">
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35701']">সানগ্লাস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35702']">প্রেস্ক্রিপশন গ্লাসস</a></mat-grid-tile>
-            <mat-grid-tile><a mat-menu-item style="width:auto;"  routerLink="['/home/products/35703']">লেন্স</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35701']">সানগ্লাস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35702']">প্রেস্ক্রিপশন গ্লাসস</a></mat-grid-tile>
+            <mat-grid-tile><a mat-menu-item style="width:auto;"  [routerLink]="['/home/products/35703']">লেন্স</a></mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
       </mat-tab-group>
     </mat-tab>
-    <mat-tab label="বাচ্চা">
+    <mat-tab label="কিডস">
       <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[7]">
+
+        <mat-tab label="বিশেষ ছাড়">
+        </mat-tab>
         <mat-tab label="খেলনা">
         </mat-tab>
         <mat-tab label="পোশাক">
@@ -353,12 +374,12 @@
         </mat-tab>
       </mat-tab-group>
     </mat-tab>
-    <mat-tab label="হোম অ্যান্ড কিচেন">
+    <!--<mat-tab label="হোম & কিচেন">
     </mat-tab>
     <mat-tab label="মেডিসিন">
-    </mat-tab>
-    <mat-tab label="প্রাতিষ্ঠানিক অর্ডার">
-      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu" (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[8]">
+    </mat-tab>-->
+    <!--<mat-tab label="প্রাতিষ্ঠানিক অর্ডার">
+      <mat-tab-group dynamicHeight fxHide fxShow.gt-sm mat-align-tabs="center" class="mat-tab-group-menu"  (mouseover)="allTabClick($event)" [selectedIndex]="allSelectedIndex[8]">
 
         <mat-tab label="কনফারেন্স">
         </mat-tab>
@@ -367,7 +388,9 @@
         <mat-tab label="প্রিন্টিং">
         </mat-tab>
       </mat-tab-group>
-    </mat-tab>
+    </mat-tab>-->
+
+
   </mat-tab-group>
 
 

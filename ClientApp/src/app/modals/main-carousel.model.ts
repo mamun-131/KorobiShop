@@ -1,5 +1,6 @@
 
 export class MainCarousel {
+
     id?: number;
     title?: string;
     subtitle?: string;
@@ -21,7 +22,7 @@ export class MainCarousel {
         this.description = description;
         this.image = image;
         this.link = link;
-      
+
     }
 
 }

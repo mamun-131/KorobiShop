@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //export type pictures = 'assets/images/korobi/book/0001.jpeg' | 'assets/images/korobi/book/0001-1.jpeg' | 'assets/images/korobi/book/0001-2.jpeg';
 var Product = /** @class */ (function () {
-    function Product(id, name, price, salePrice, discount, pictures, producer, shortDetails, description, stock, 
+    function Product(id, cId, name, price, salePrice, discount, pictures, producer, shortDetails, description, stock, 
     //newPro?: boolean,
     brand, 
     //sale?: boolean,
@@ -11,6 +11,7 @@ var Product = /** @class */ (function () {
     //  subsubcategory?: string,
     tags, atrributes, colors) {
         this.id = id;
+        this.cId = cId;
         this.name = name;
         this.price = price;
         this.salePrice = salePrice;

@@ -18,8 +18,11 @@
            <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
         </div>
         <div class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center">
-         <p>{{product.price | currency:productsService?.currency:'symbol'}}</p>
-        <a (click)="addToCart(product)"><mat-icon class="mat-icon-lg mat-icon material-icons">shopping_cart</mat-icon></a>
+          <p>{{product.price | currency:productsService?.currency:'symbol'}}</p>
+          <div fxLayout="column">
+            <del><h6 *ngIf="product.salePrice != 0;" fxLayout="column"> TK.{{product.salePrice | number : '1.2-2'}}</h6></del>
+          </div>
+          <a (click)="addToCart(product)"><mat-icon class="mat-icon-lg mat-icon material-icons">shopping_cart</mat-icon></a>
         </div>
         <div class="icons" fxLayout="column">
            <a (click)="addToWishlist(product)"><mat-icon class="mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon></a>

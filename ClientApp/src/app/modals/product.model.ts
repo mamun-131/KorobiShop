@@ -9,7 +9,8 @@ export type ProductColor = 'white' | 'black' | 'red' | 'green' | 'purple' | 'yel
 
 
 export class Product {
-  id?: number;
+    id?: number;
+    cId?: number;
   name?: string;
   price?: number;
   salePrice?: number;
@@ -30,7 +31,8 @@ export class Product {
     colors?: ProductColor[];
 
   constructor(
-    id?: number,
+      id?: number,
+      cId?: number,
     name?: string,
     price?: number,
     salePrice?: number,
@@ -50,7 +52,8 @@ export class Product {
       atrributes?: ProductAtrributes[],
         colors?: ProductColor[]
   ) {
-    this.id = id;
+      this.id = id;
+      this.cId = cId;
     this.name = name;
     this.price = price;
     this.salePrice = salePrice;

@@ -64,9 +64,14 @@ export class MainComponent implements OnInit {
 
     showSearch() {
         this.isSearchVisible = true;//!this.isSearchVisible;
+
     }
     hideSearch() {
         this.isSearchVisible = false;
+
+    }
+    doSearch(searchValue: string) {
+        this.router.navigate(['/home/products/search' + searchValue]);
     }
 
 

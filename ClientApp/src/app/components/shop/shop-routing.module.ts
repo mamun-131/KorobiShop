@@ -8,6 +8,7 @@ import { HomeThreeComponent } from './home-three/home-three.component';
 import { HomeFourComponent } from './home-four/home-four.component';
 import { HomeFiveComponent } from './home-five/home-five.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { MenuExtensionComponent } from './menu-extension/menu-extension.component';
 
 // Routes
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'two', component: HomeTwoComponent },
   { path: 'three', component: HomeThreeComponent },
   { path: 'four', component: HomeFourComponent },
-  { path: 'five', component: HomeFiveComponent },
+    { path: 'five', component: HomeFiveComponent },
+    { path: 'menu-extension/:category', component: MenuExtensionComponent },
+    
   { path: 'products/:category', component: ProductLeftSidebarComponent },
     { path: 'product/:id', component: ProductDetailsComponent }
 

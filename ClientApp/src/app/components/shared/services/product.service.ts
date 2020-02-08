@@ -152,69 +152,116 @@ public removeFromCompare(product: Product) {
     }
 
     
-    // GET ALL
-    getAllDiscountProduct(): Observable<Product[]> {
+    //// GET ALL
+    getAllSpecialSalesProduct(id: number): Observable<Product[]> {
         //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllDiscountProduct/')
+        return this.httpClient.get<Product[]>('api/GetAllSpecialSalesProduct/' + id)
             .pipe(
                 retry(1),
                 catchError(this.errorHandl)
             )
     }
 
-    getAllOldPopularProduct(): Observable<Product[]> {
-        //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllOldPopularProduct/')
-            .pipe(
-                retry(1),
-                catchError(this.errorHandl)
-            )
-    }
-    getAllMostSoldProduct(): Observable<Product[]> {
-        //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllMostSoldProduct/')
-            .pipe(
-                retry(1),
-                catchError(this.errorHandl)
-            )
-    }
     
-    getAllPreOrderProduct(): Observable<Product[]> {
+
+    getAllWriters(): Observable<any> {
         //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllPreOrderProduct/')
+        return this.httpClient.get<any>('api/GetAllWriters/')
             .pipe(
                 retry(1),
                 catchError(this.errorHandl)
             )
     }
 
-
-    getAllStationeryProduct(): Observable<Product[]> {
-        //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllStationeryProduct/')
+    
+    
+    getProductByWriter(id: number): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetProductByWriter/' + id)
             .pipe(
                 retry(1),
                 catchError(this.errorHandl)
             )
     }
 
-    getAllArtAndCraftProduct(): Observable<Product[]> {
+    
+
+    getAllPublishers(): Observable<any> {
         //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllArtAndCraftProduct/')
+        return this.httpClient.get<any>('api/GetAllPublishers/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+    getProductByPublisher(id: number): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetProductByPublisher/' + id)
             .pipe(
                 retry(1),
                 catchError(this.errorHandl)
             )
     }
 
-    getAllOrgOrderProduct(): Observable<Product[]> {
-        //console.log(this.baseUrl);
-        return this.httpClient.get<Product[]>('api/GetAllOrgOrderProduct/')
+    
+    getAllAttributeTagProduct(param: string): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetAllAttributeTagProduct/' + param)
             .pipe(
                 retry(1),
                 catchError(this.errorHandl)
             )
     }
+    //getAllOldPopularProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllOldPopularProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
+    //getAllMostSoldProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllMostSoldProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
+    
+    //getAllPreOrderProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllPreOrderProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
+
+
+    //getAllStationeryProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllStationeryProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
+
+    //getAllArtAndCraftProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllArtAndCraftProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
+
+    //getAllOrgOrderProduct(): Observable<Product[]> {
+    //    //console.log(this.baseUrl);
+    //    return this.httpClient.get<Product[]>('api/GetAllOrgOrderProduct/')
+    //        .pipe(
+    //            retry(1),
+    //            catchError(this.errorHandl)
+    //        )
+    //}
 
 
 
@@ -227,6 +274,10 @@ public removeFromCompare(product: Product) {
 
 
     // Get Products By Id
+
+    
+
+
     getProductById(id: number): Observable<Product> {
         return this.httpClient.get<Product>('api/GetProductById/' + id)
             .pipe(
@@ -276,7 +327,13 @@ public removeFromCompare(product: Product) {
             )
     }
 
-
+    getProductBySearch(id: string): Observable<Product[]> {
+        return this.httpClient.get<Product[]>('api/GetProductBySearch/' + id)
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
 
 
     GetAllPreOrderProduct

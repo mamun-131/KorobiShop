@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from  '@angular/router';
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -10,13 +11,15 @@ export class MenuComponent implements OnInit {
     activeLink = this.links[0];
     background = '';
     allSelectedIndex: number[] = [];
+    writerList: any = {};
+    publisherList: any = {};
     //selectedIndex = 0;
     //selectedIndex1 = 0;
     //selectedIndex2 = 0;
     //selectedIndex3 = 0;
     //selectedIndex4 = 0;
     menuIndex:string = '';
-
+    menuItems: string = '';
     
     toggleBackground() {
         this.background = this.background ? '' : 'primary';
@@ -25,23 +28,51 @@ export class MenuComponent implements OnInit {
     addLink() {
         this.links.push(`Link ${this.links.length + 1}`);
     }
-    constructor(private router: Router) { }
+    constructor(private router: Router, private productService: ProductService) { }
 
     ngOnInit() {
         this.allSelectedIndexZero();
+
+        
+
+        this.productService.getAllWriters()
+          .subscribe(
+              (writer: any) => {
+                  this.writerList = writer;
+                  console.log(writer);
+              }
+        );
+
+
+        this.productService.getAllPublishers()
+            .subscribe(
+                (publisher: any) => {
+                    this.publisherList = publisher;
+                    console.log(publisher);
+                }
+            );
     }
 
 
     menuRouting(event: MouseEvent, menuCode: string) {
         console.log('mamun' + menuCode);
 
+     
       
         switch (menuCode) {
             case '-0-0':
                 this.router.navigate(['/home/four']);
                 break;
+            case '-1-2':
+                this.router.navigate(['/home/products/-morew']);
+                break;
+            case '-1-3':
+                this.router.navigate(['/home/products/-morep']);
+                break;
             default:
-                this.router.navigate(['/home/products/' + menuCode]);
+                  if (this.menuItems != 'mat-menu-item') {
+                      this.router.navigate(['/home/products/' + menuCode]);
+                    }
                 break;
         }
 
@@ -65,11 +96,20 @@ export class MenuComponent implements OnInit {
         const attr = el.attributes.getNamedItem('class');
         console.log(el.id.length);
         console.log(el.id);
+        console.log(attr.textContent);
         console.log(el.id.substring(el.id.length - 2));
-        
-         if (el.id.charAt(15) == '-') {
-            const tabIndex = el.id.substring(el.id.length - 4);
-             for (var i = 0; i < 9; i++) {
+
+        this.menuItems = attr.textContent;
+
+        if (el.id.charAt(15) == '-') {
+            var tabIndex = '';
+            if (el.id.length == 17) {
+                 tabIndex = el.id.substring(el.id.length - 4);
+            } else {
+                 tabIndex = el.id.substring(el.id.length - 5);
+            }
+            
+             for (var i = 0; i < 12; i++) {
 
                 if (el.id.charAt(14) == String(i)) {
                     if (el.id.substring(el.id.length - 2).charAt(0) == '-') {

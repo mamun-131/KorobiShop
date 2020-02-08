@@ -17,7 +17,7 @@ import { WishlistService } from 'src/app/components/shared/services/wishlist.ser
 export class ProductCarouselComponent implements OnInit {
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
     @Input('product') product: Array<Product> = [];
-    @Input('carouselType') carouselType: string;
+    //@Input('carouselType') carouselType: string;
 
     viewnumber
   public config: SwiperConfigInterface = {};

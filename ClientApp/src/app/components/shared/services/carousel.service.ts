@@ -5,6 +5,8 @@ import { retry, catchError } from 'rxjs/operators';
 import { Inject } from '@angular/core';
 import { MainCarousel } from 'src/app/modals/main-carousel.model';
 import { Banners } from 'src/app/modals/banners.model';
+import { FirstPageCarouselSerial } from '../../../modals/FirstPageCarouselSerial.model';
+import { Product } from '../../../modals/product.model';
 
 @Injectable({
     providedIn: 'root'
@@ -52,8 +54,22 @@ export class AppCarouselService {
                 catchError(this.errorHandl)
             )
     }
+    getFirstPageCarouselSerial(): Observable<FirstPageCarouselSerial> {
+      //  console.log(this.http.get<FirstPageCarouselSerial>('api/GetFirstPageCarouselSerial/'));
+        return this.http.get<FirstPageCarouselSerial>('api/GetFirstPageCarouselSerial/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+    getAllFirstPageCarouselDisplay(): Observable<Product[]> {
 
-    
+        return this.http.get<Product[]>('api/GetAllFirstPageCarouselDisplay/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    } 
 
     //// GET
     //GetIssue(id): Observable<Bug> {

@@ -46,6 +46,7 @@
     <None Remove="ClientApp\src\app\components\shared\user-menu\user-menu.component.ts" />
     <None Remove="ClientApp\src\app\components\user\user-profile\user-profile.component.ts" />
     <None Remove="ClientApp\src\app\modals\banners.model.ts" />
+    <None Remove="ClientApp\src\app\modals\FirstPageCarouselSerial.model.ts" />
     <None Remove="ClientApp\src\app\modals\main-carousel.model.ts" />
     <None Remove="ClientApp\src\app\modals\menuTagMap.model.ts" />
     <None Remove="ClientApp\src\app\modals\productAtrribute.model.ts" />
@@ -64,6 +65,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\modals\banners.model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\modals\firstPageCarouselSerial.model.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\modals\user-profile.model.ts">

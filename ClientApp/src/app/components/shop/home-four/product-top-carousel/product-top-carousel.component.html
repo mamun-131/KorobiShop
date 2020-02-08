@@ -1,0 +1,15 @@
+<div class="featured-products-wrap">
+  <div class="container">
+    <div class="products sec-padding bg">
+
+      <div class="products-four">
+
+        <h3>{{productTopCarouselList.caption}} </h3> <a class="navbar-link" routerLink="['/home/products/','']"> ALL </a>
+
+        <app-product-carousel [product]="productTopCarouselDataList | slice:0:25"></app-product-carousel>
+
+      </div>
+    </div>
+
+  </div>
+</div>

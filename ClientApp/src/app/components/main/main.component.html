@@ -17,7 +17,7 @@
   <mat-toolbar class="main-topbar" [ngClass]="{topbar_four: url == '/home/four'}">
     <mat-toolbar-row fxLayout="row" fxLayoutAlign="end center" class="top-bar container">
 
-      <button mat-raised-button color="warn">Shop</button>
+      <!--<button mat-raised-button color="warn">Shop</button>-->
 
       <!--<div fxLayout="row" class="welcome-message">
         <div class="widget-text">
@@ -77,7 +77,7 @@
         </div>
       </div>
       <div *ngIf="!isSearchVisible" class="info-message-icon" fxLayout="column" fxLayoutAlign="center center">
-        <a [routerLink]="['/home/four']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/Korobi-08.png"></a>
+        <a [routerLink]="['/home/four']" routerLinkActive="router-link-active"><img style="height:50px;padding-top:18px;" src="assets/images/korobi/logo/korobi1.png"></a>
       </div>
 
 
@@ -98,7 +98,7 @@
               </span>
             </mat-menu>
             <input class="input-m" type="text" placeholder="Type to search...">
-            <button class="btn-search-m" type="submit" (click)="hideSearch"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
+            <button class="btn-search-m" type="submit" (click)="hideSearch()"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
           </div>
         </form>
       </div>
@@ -120,7 +120,7 @@
 
     <div class="container" fxHide fxShow.gt-sm fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px" fxlayoutalign="space-between center">
       <div class="logo">
-        <a fxHide fxShow.gt-sm [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img style="width:72px;height:48px;padding-top:18px;" src="assets/images/korobi/logo/Korobi-08.png"></a>
+        <a fxHide fxShow.gt-sm [routerLink]="['/home/one']" routerLinkActive="router-link-active"><img style="height:50px;padding-top:18px;" src="assets/images/korobi/logo/korobi1.png"></a>
       </div>
       <div fxflexoffset.gt-sm="10" fxFlex class="search-form">
         <form class="search-form" fxLayout="row">
@@ -136,8 +136,8 @@
                 </button>
               </span>
             </mat-menu>
-            <input class="input" type="text" placeholder="Type to search...">
-            <button class="btn-search" type="submit"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
+            <input class="input" #searchValue type="text" placeholder="Type to search...">
+            <button class="btn-search" type="submit" (click)="doSearch(searchValue.value)"><mat-icon class="mat-icon-lg mat-icon material-icons">search</mat-icon></button>
           </div>
 
 

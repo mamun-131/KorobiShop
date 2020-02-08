@@ -1,0 +1,12 @@
+<div class="about-us-wrapper">
+  <div class="container">
+
+   <h2>{{listTitle}}</h2>  
+    <mat-grid-list  cols="4" rowHeight="4:1" >
+      <div *ngFor="let item of commenList; let i = index" >
+        <mat-grid-tile ><a [routerLink]="['/home/products/publisher' + item.id]" >{{item.name}}</a></mat-grid-tile>
+      </div>
+    </mat-grid-list>
+      
+  </div>
+</div>
