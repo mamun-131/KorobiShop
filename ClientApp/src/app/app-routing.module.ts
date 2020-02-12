@@ -54,6 +54,11 @@ const appRoutes: Routes = [
             }
         ]
     },
+    {
+        path: 'admin-panel',
+        loadChildren: './components/admin-panel/admin-panel.module#AdminPanelModule'
+
+    } ,
 
     {
         path: '**',

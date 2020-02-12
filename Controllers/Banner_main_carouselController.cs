@@ -56,6 +56,69 @@ namespace KorobiShop.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getCarousels")]
+        //POST : /api/getCarousels
+        public async Task<List<FirstPageCarouselList>> getCarousels()
+        {
+            try
+            {
+                return await _context.FirstPageCarouselList.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("getCarouselSerials")]
+        //POST : /api/getCarouselSerials
+        public async Task<List<FirstPageCarouselSerial>> getCarouselSerials()
+        {
+            try
+            {
+                return await _context.firstPageCarouselSerial.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        [Route("saveCarousel")]
+        //POST : /api/saveCarousel
+        public async Task<FirstPageCarouselList> SaveCarousel(FirstPageCarouselList model)
+        {
+            try
+            {
+                await _context.FirstPageCarouselList.AddAsync(model);
+                await _context.SaveChangesAsync();
+                return model;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        [Route("saveCarouselSerial")]
+        //POST : /api/saveCarouselSerial
+        public async Task<FirstPageCarouselSerial> SaveCarouselSerial(FirstPageCarouselSerial model)
+        {
+            try
+            {
+                await _context.firstPageCarouselSerial.AddAsync(model);
+                await _context.SaveChangesAsync();
+                return model;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

@@ -1,0 +1,12 @@
+.carouselSerialForm .mat-radio-button{
+    margin:0 5px;
+}
+
+.carouselSerialForm th, .carouselSerialForm td{
+    min-width: 150px;
+}
+.carouselSerialForm .mat-table tbody{
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    display: block !important;
+}

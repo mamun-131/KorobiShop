@@ -16,6 +16,13 @@ namespace KorobiShop.Models
         public string image { get; set; }
         public string link { get; set; }
     }
+
+    public class FirstPageCarouselList
+    {
+        public int id { get; set; }
+        public string caption { get; set; }
+
+    }
     public class FirstPageCarouselSerial{
         public int id { get; set; }
         public int mainSlno { get; set; }
@@ -23,7 +30,7 @@ namespace KorobiShop.Models
         public string caption { get; set; }
         public string type { get; set; }
         public string routerlink { get; set; }
-    
+        public bool isActive { get; set; }
     }
 
     public class FirstPageCarouselProducts

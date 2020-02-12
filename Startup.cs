@@ -31,8 +31,16 @@ namespace KorobiShop
         {
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
-             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowMyOrigin",
+                builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+
+            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
          
+
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyTasteDatabase")));
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyTasteDatabase")));
@@ -98,6 +106,8 @@ namespace KorobiShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors("AllowMyOrigin");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

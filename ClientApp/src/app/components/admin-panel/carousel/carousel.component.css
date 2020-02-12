@@ -1,0 +1,8 @@
+.carouselForm th, .carouselForm td{
+    min-width: 200px;
+}
+.carouselForm .mat-table tbody{
+    max-height: 500px !important;
+    overflow-y: auto !important;
+    display: block !important;
+}
