@@ -42,6 +42,7 @@ export class CarouselSerialComponent implements OnInit {
 
   onSaveClick() {
     let model = this.carouselSerialForm.value;
+    model.caption = model.caption.trim();
     if (!(model.mainSlno && model.typeSl && model.caption && model.type)) {
       return;
     }

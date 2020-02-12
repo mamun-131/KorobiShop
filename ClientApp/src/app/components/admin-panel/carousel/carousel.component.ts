@@ -37,6 +37,7 @@ export class CarouselComponent implements OnInit {
 
   onSaveClick() {
     let model = this.carouselForm.value;
+    model.caption = model.caption.trim();
     if (!model.caption) {
       return;
     }
