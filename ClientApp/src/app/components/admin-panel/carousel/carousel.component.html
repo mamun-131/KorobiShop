@@ -17,11 +17,12 @@
                     </div>
                     <div class="form-group col-md-4">
                       <mat-form-field class="col-md-12 field-height">
-                        <input formControlName="caption" matInput placeholder="Carousel Name" maxlength="50">
+                        <input formControlName="caption" required matInput placeholder="Carousel Name" maxlength="50">
                       </mat-form-field>
                     </div>
                     <div class="col-md-2">
-                      <button style="margin-top: 15px;" (click)="onSaveClick()" mat-raised-button color="primary">
+                      <button [disabled]="!carouselForm.valid" style="margin-top: 15px;" (click)="onSaveClick()"
+                        mat-raised-button color="primary">
                         Add New</button>
                     </div>
                   </div>

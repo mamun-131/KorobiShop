@@ -23,12 +23,12 @@ export class CarouselSerialComponent implements OnInit {
   initFrom() {
     this.carouselSerialForm = this.fb.group({
       id: [0],
-      mainSlno: [''],
-      typeSl: [''],
-      caption: ['', [Validators.maxLength(50)]],
-      type: ['', [Validators.maxLength(50)]],
+      mainSlno: ['', Validators.required],
+      typeSl: ['', Validators.required],
+      caption: ['', [Validators.required, Validators.maxLength(50)]],
+      type: ['', [Validators.required, Validators.maxLength(50)]],
       routerlink: ['', [Validators.maxLength(50)]],
-      isActive: ['']
+      isActive: ['', Validators.required]
     });
   }
 

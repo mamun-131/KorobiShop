@@ -14,22 +14,22 @@
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <mat-form-field class="col-md-12 field-height">
-                        <input type="number" formControlName="mainSlno" matInput placeholder="Main Serial No">
+                        <input type="number" formControlName="mainSlno" required matInput placeholder="Main Serial No">
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
                       <mat-form-field class="col-md-12 field-height">
-                        <input type="number" formControlName="typeSl" matInput placeholder="Type Serial">
+                        <input type="number" formControlName="typeSl" required matInput placeholder="Type Serial">
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
                       <mat-form-field class="col-md-12 field-height">
-                        <input formControlName="caption" matInput placeholder="Caption">
+                        <input formControlName="caption" required matInput placeholder="Caption">
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
                       <mat-form-field class="col-md-12 field-height">
-                        <input formControlName="type" matInput placeholder="Type">
+                        <input formControlName="type" required matInput placeholder="Type">
                       </mat-form-field>
                     </div>
                     <div class="form-group col-md-6">
@@ -57,7 +57,7 @@
         <mat-card-actions class="custom-card-action" style="border-top: 1px solid lightgray">
           <div class="form-row">
             <div class="col-md-12">
-              <button (click)="onSaveClick()" mat-raised-button color="primary">
+              <button [disabled]="!carouselSerialForm.valid" (click)="onSaveClick()" mat-raised-button color="primary">
                 Add New
               </button>
             </div>

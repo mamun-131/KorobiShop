@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
   initFrom() {
     this.carouselForm = this.fb.group({
       id: [0],
-      caption: ['', [Validators.maxLength(50)]],
+      caption: ['', [Validators.required, Validators.maxLength(50)]],
     });
   }
 
