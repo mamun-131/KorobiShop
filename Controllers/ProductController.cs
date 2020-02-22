@@ -194,14 +194,19 @@ namespace KorobiShop.Controllers
 
             {
 
-            //   return _context.product.FromSqlRaw($"EXECUTE sp_FindStringInTable '%" + id + "%', 'korobi_shop_admin', 'product'").ToList();
+                //   return _context.product.FromSqlRaw($"EXECUTE sp_FindStringInTable '%" + id + "%', 'korobi_shop_admin', 'product'").ToList();
 
+                string[] idarr = id.Split("-");
+                if(idarr[0] == "")
+                {
+                    idarr[0] = "%%";
+                }
                 return _context.product.FromSqlRaw($"SELECT ISNULL(p.id , 0) as id, ISNULL(title, '') as name, ISNULL(pr.price, 0) as price, ISNULL(sd.oldPrice, 0) as salePrice, " +
            "ISNULL(sd.discount_Percentage, 0) as discount, ISNULL(p.images, 'assets/images/logo-02-02.png') as pictures, ISNULL(p.producer, '') as producer, " +
            "ISNULL(p.shortDetails, '') as shortDetails, ISNULL(p.description, '') as description, ISNULL(p.stock, 0) as stock, ISNULL(p.Brand, '') as brand, ISNULL(c.category, '') as category FROM[korobi_shop_maindatabase].[korobi_shop_admin].[product] " +
            "p LEFT JOIN[korobi_shop_maindatabase].[korobi_shop_admin].[product_category] c ON p.catagory_id = c.id LEFT JOIN[korobi_shop_maindatabase].[korobi_shop_admin].[display_specialSales] " +
-           "sd on sd.product_id = p.id LEFT JOIN[korobi_shop_maindatabase].[korobi_shop_admin].[product_price] pr ON pr.product_id = p.id where p.title LIKE N'%ময়ূরাক্ষী%' or p.producer LIKE N'%ময়ূরাক্ষী%' " +
-           "or p.shortDetails LIKE N'%ময়ূরাক্ষী%' or p.description LIKE N'%ময়ূরাক্ষী%' or p.Brand LIKE N'%ময়ূরাক্ষী%'  or c.category LIKE N'%ময়ূরাক্ষী%'").ToList();
+           "sd on sd.product_id = p.id LEFT JOIN[korobi_shop_maindatabase].[korobi_shop_admin].[product_price] pr ON pr.product_id = p.id where  c.category LIKE N'" + idarr[0] + "' and (p.title LIKE N'%" + idarr[1] + "%' or p.producer LIKE N'%" + idarr[1] + "%' " +
+           "or p.shortDetails LIKE N'%" + idarr[1] + "%' or p.description LIKE N'%" + idarr[1] + "%' or p.Brand LIKE N'%" + idarr[1] + "%'  or c.category LIKE N'%" + idarr[1] + "%')").ToList();
 
             }
 

@@ -9,7 +9,7 @@ var Product = /** @class */ (function () {
     category, 
     //subcategory?: string,
     //  subsubcategory?: string,
-    tags, atrributes, colors) {
+    tags, atrributes, colors, color, condition, size, material, dimension, age, brandatrributes) {
         this.id = id;
         this.cId = cId;
         this.name = name;
@@ -30,6 +30,13 @@ var Product = /** @class */ (function () {
         this.tags = tags;
         this.atrributes = atrributes;
         this.colors = colors;
+        this.color = color;
+        this.condition = condition;
+        this.size = size;
+        this.material = material;
+        this.dimension = dimension;
+        this.age = age;
+        this.brandatrributes = brandatrributes;
     }
     return Product;
 }());

@@ -90,50 +90,61 @@
             <div class="py-1 mt-15">
               <p *ngIf="productColor.length > 0">
                 Color:
-                <mat-button-toggle-group name="productColor" aria-label="Product Color">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productColor; let i = index" [ngStyle]="{'color': productColortext[i]}">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productColorgroup="matButtonToggleGroup" name="productColor" aria-label="Product Color" (click)="checkColorattribute(productColorgroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productColor; let i = index" [ngStyle]="{'color': productColortext[i]}">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
+
                 </mat-button-toggle-group>
+        
               </p>
+            
               <mat-divider *ngIf="productColor.length > 0"></mat-divider>
               <p *ngIf="productCondition.length > 0">
                 Condition:
-                <mat-button-toggle-group name="productCondition" aria-label="Product Condition">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productCondition; let i = index">{{attr}}</mat-button-toggle>
-                </mat-button-toggle-group>
-              </p>
+                <mat-button-toggle-group #productConditiongroup ="matButtonToggleGroup" p aria-label="Product Condition" (click)="checkConditionattribute(productConditiongroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productCondition; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
+
+                  </mat-button-toggle-group>
+               </p>
               <mat-divider *ngIf="productCondition.length > 0"></mat-divider>
               <p *ngIf="productSize.length > 0">
                 Size:
-                <mat-button-toggle-group name="productSize" aria-label="Product Size">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productSize; let i = index">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productSizegroup="matButtonToggleGroup" aria-label="Product Size" (click)="checkSizeattribute(productSizegroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productSize; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
                 </mat-button-toggle-group>
               </p>
               <mat-divider *ngIf="productSize.length > 0"></mat-divider>
               <p *ngIf="productMaterial.length > 0">
                 Material:
-                <mat-button-toggle-group name="productMaterial" aria-label="Product Material">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productMaterial; let i = index">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productMaterialgroup="matButtonToggleGroup" aria-label="Product Material" (click)="checkMaterialattribute(productMaterialgroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productMaterial; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
                 </mat-button-toggle-group>
               </p>
               <mat-divider *ngIf="productMaterial.length > 0"></mat-divider>
               <p *ngIf="productDimension.length > 0">
                 Dimension:
-                <mat-button-toggle-group name="productDimension" aria-label="Product Dimension">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productDimension; let i = index">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productDimensiongroup="matButtonToggleGroup" aria-label="Product Dimension" (click)="checkDimensionattribute(productDimensiongroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productDimension; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
                 </mat-button-toggle-group>
               </p>
               <mat-divider *ngIf="productDimension.length > 0"></mat-divider>
               <p *ngIf="productAge.length > 0">
                 Age:
-                <mat-button-toggle-group name="productAge" aria-label="Product Age">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productAge; let i = index">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productAgegroup="matButtonToggleGroup" aria-label="Product Age" (click)="checkAgeattribute(productAgegroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productAge; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
                 </mat-button-toggle-group>
               </p>
               <mat-divider *ngIf="productAge.length > 0"></mat-divider>
               <p *ngIf="productBrand.length > 0">
                 Brand:
-                <mat-button-toggle-group name="productBrand" aria-label="Product Brand">
-                  <mat-button-toggle value="attr" *ngFor="let attr of productBrand; let i = index">{{attr}}</mat-button-toggle>
+                <mat-button-toggle-group #productBrandgroup="matButtonToggleGroup" aria-label="Product Brand" (click)="checkBrandattribute(productBrandgroup.value)">
+                  <mat-button-toggle [value]="attr" *ngFor="let attr of productBrand; let i = index">{{attr}}</mat-button-toggle>
+                  <mat-button-toggle [value]="none">None</mat-button-toggle>
                 </mat-button-toggle-group>
               </p>
 

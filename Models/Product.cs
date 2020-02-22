@@ -89,4 +89,16 @@ namespace KorobiShop.Models
 
 
     }
+    public class Product_Category
+    {
+        public int id { get; set; }
+        public string category { get; set; }
+
+    }
+    public class Product_Attribute_Brand
+    {
+        public int id { get; set; }
+        public string brand { get; set; }
+
+    }
 }

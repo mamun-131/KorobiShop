@@ -193,6 +193,8 @@ public removeFromCompare(product: Product) {
                 catchError(this.errorHandl)
             )
     }
+
+
     getProductByPublisher(id: number): Observable<Product[]> {
         return this.httpClient.get<Product[]>('api/GetProductByPublisher/' + id)
             .pipe(
@@ -209,6 +211,22 @@ public removeFromCompare(product: Product) {
                 catchError(this.errorHandl)
             )
     }
+    getAllCategory(): Observable<any> {
+        return this.httpClient.get<any>('api/GetAllCategory/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+    getAllBrand(): Observable<any> {
+        return this.httpClient.get<any>('api/GetAllBrand/')
+            .pipe(
+                retry(1),
+                catchError(this.errorHandl)
+            )
+    }
+
+    
     //getAllOldPopularProduct(): Observable<Product[]> {
     //    //console.log(this.baseUrl);
     //    return this.httpClient.get<Product[]>('api/GetAllOldPopularProduct/')
@@ -336,7 +354,7 @@ public removeFromCompare(product: Product) {
     }
 
 
-    GetAllPreOrderProduct
+//   GetAllPreOrderProduct
     // Error handling
     errorHandl(error) {
         let errorMessage = '';

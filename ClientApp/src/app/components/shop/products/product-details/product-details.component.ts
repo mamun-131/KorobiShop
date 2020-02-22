@@ -32,18 +32,25 @@ export class ProductDetailsComponent implements OnInit {
     public productAttributeTags: ProductAttribute[];
     public productColor: string[] = [];
     public productColortext: string[] = [];
+    public productColorValue: any;
     public productCondition: string[] = [];
     public productConditiontext: string[] = [];
+    public productConditionValue: string;
     public productSize: string[] = [];
     public productSizetext: string[] = [];
+    public productSizeValue: string; 
     public productMaterial: string[] = [];
     public productMaterialtext: string[] = [];
+    public productMaterialValue: string;
     public productDimension: string[] = [];
     public productDimensiontext: string[] = [];
+    public productDimensionValue: string;
     public productAge: string[] = [];
     public productAgetext: string[] = [];
+    public productAgeValue: string;
     public productBrand: string[] = [];
     public productBrandtext: string[] = [];
+    public productBrandValue: string;
   public thumbImage: any;
   public fullImage: any;
   public image: any;
@@ -119,6 +126,39 @@ export class ProductDetailsComponent implements OnInit {
     });
    }
 
+//Attributes setting to cart 
+    checkColorattribute(attr: any) {
+        this.productColorValue = attr;
+        console.log(attr);
+    }
+
+    checkConditionattribute(attr: any) {
+        this.productConditionValue = attr;
+        console.log(attr);
+    }
+
+    checkSizeattribute(attr: any) {
+        this.productSizeValue = attr;
+        console.log(attr);
+    }
+    checkMaterialattribute(attr: any) {
+        this.productMaterialValue = attr;
+        console.log(attr);
+    }
+    checkDimensionattribute(attr: any) {
+        this.productDimensionValue = attr;
+        console.log(attr);
+    }
+    checkAgeattribute(attr: any) {
+        this.productAgeValue = attr;
+        console.log(attr);
+    }
+    checkBrandattribute(attr: any) {
+        this.productBrandValue = attr;
+        console.log(attr);
+    }
+
+
   ngOnInit() {
     this.productsService.getProducts().subscribe(product => this.products = product);
 
@@ -190,7 +230,16 @@ getRelatedProducts() {
 
   // Add to cart
   public addToCart(product: Product, quantity) {
-    if (quantity == 0) return false;
+      if (quantity == 0) return false;
+      product.color = this.productColorValue;
+      product.condition = this.productConditionValue;
+      product.size = this.productSizeValue;
+      product.material = this.productMaterialValue;
+      product.dimension = this.productDimensionValue;
+      product.age = this.productAgeValue;
+      product.brandatrributes = this.productBrandValue;
+
+      console.log(product);
     this.cartService.addToCart(product, parseInt(quantity));
   }
 

@@ -22,10 +22,16 @@ export class ProductTopCarouselComponent implements OnInit {
 
   //  viewnumber
   //public config: SwiperConfigInterface = {};
-  constructor() { }
+    constructor() {
+
+
+
+    }
 
     ngOnInit() {
         console.log(this.productTopCarouselDataList);
+
+
   }
  // ngAfterViewInit(){
  //   this.config = {

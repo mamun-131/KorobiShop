@@ -71,12 +71,13 @@ export class MainComponent implements OnInit {
 
     }
     doSearch(searchValue: string) {
-        this.router.navigate(['/home/products/search' + searchValue]);
+        this.router.navigate(['/home/products/search-' + this.mainMenu + '-' + searchValue]);
     }
 
 
     public changeMainMenu(mainMenu) {
         this.mainMenu = mainMenu;
+        console.log(this.mainMenu);
     }
 
 

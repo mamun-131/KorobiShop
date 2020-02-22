@@ -29,7 +29,13 @@ export class Product {
   tags?: ProductTags[];
     atrributes?: ProductAtrributes[];
     colors?: ProductColor[];
-
+    color?: string;
+    condition?: string;
+    size?: string;
+    material?: string;
+    dimension?: string;
+    age?: string;
+    brandatrributes?: string;
   constructor(
       id?: number,
       cId?: number,
@@ -50,7 +56,14 @@ export class Product {
     //  subsubcategory?: string,
     tags?: ProductTags[],
       atrributes?: ProductAtrributes[],
-        colors?: ProductColor[]
+      colors?: ProductColor[],
+      color?: string,
+      condition?: string,
+      size?: string,
+      material?: string,
+      dimension?: string,
+      age?: string,
+      brandatrributes?: string
   ) {
       this.id = id;
       this.cId = cId;
@@ -72,6 +85,13 @@ export class Product {
     this.tags = tags;
       this.atrributes = atrributes;
       this.colors = colors;
+      this.color = color;
+      this.condition = condition;
+      this.size = size;
+      this.material = material;
+      this.dimension = dimension;
+      this.age = age;
+      this.brandatrributes = brandatrributes;
   }
 
  }

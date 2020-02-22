@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatAutocompleteModule} from '@angular/material';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -52,6 +52,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 @NgModule({
     declarations: [
         //HeaderComponent,
+
         FooterComponent,
         MenuComponent,
         SidebarComponent,
@@ -72,6 +73,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
     imports: [
         CommonModule,
         RouterModule,
+        MatAutocompleteModule,
         MatGridListModule,
         MatButtonModule,
         MatSnackBarModule,
@@ -96,6 +98,7 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
     ],
     exports: [
         CommonModule,
+        MatAutocompleteModule,
         MatGridListModule,
         MatButtonModule,
         MatSnackBarModule,

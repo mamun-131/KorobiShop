@@ -37,28 +37,28 @@ public observer   :  Subscriber<{}>;
     let message, status;
      var item: CartItem | boolean = false;
      // If Products exist
-     let hasItem = products.find((items, index) => {
-       if(items.product.id == product.id) {
-         let qty = products[index].quantity + quantity;
-         let stock = this.calculateStockCounts(products[index], quantity);
-         if(qty != 0 && stock) {
-           products[index]['quantity'] = qty;
-           message = 'The product ' + product.name + ' has been added to cart.';
-           status = 'success';
-           this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-         }
-         return true;
-       }
-     } );
+     ////let hasItem = products.find((items, index) => {
+     ////  if(items.product == product) {
+     ////    let qty = products[index].quantity + quantity;
+     ////    let stock = this.calculateStockCounts(products[index], quantity);
+     ////    if(qty != 0 && stock) {
+     ////      products[index]['quantity'] = qty;
+     ////      message = 'The product ' + product.name + ' has been added to cart.';
+     ////      status = 'success';
+     ////      this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+     ////    }
+     ////    return true;
+     ////  }
+     ////} );
 
      // If Products does not exist (Add New Products)
-     if(!hasItem) {
+     ////if(!hasItem) {
       item = { product: product, quantity: quantity };
       products.push(item);
       message = 'The product ' + product.name + ' has been added to cart.';
       status = 'success';
       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-  }
+  ////}
 
      localStorage.setItem("cartItem", JSON.stringify(products));
      return item;

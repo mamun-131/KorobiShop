@@ -3,7 +3,20 @@ import { ProductService } from 'src/app/components/shared/services/product.servi
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product, ColorFilter } from 'src/app/modals/product.model';
 import { MenuTagMap } from '../../../../modals/menuTagMap.model';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
+
+export interface Writer {
+    id: number;
+    name: string;
+}
+
+export interface Publisher {
+    id: number;
+    name: string;
+}
 @Component({
   selector: 'app-product-left-sidebar',
   templateUrl: './product-left-sidebar.component.html',
@@ -25,9 +38,67 @@ export class ProductLeftSidebarComponent implements OnInit {
   public products: Product[] = [];
   public tags         :   any[] = [];
     public colors: any[] = [];
-    public menuTagMap: MenuTagMap ;
+    public menuTagMap: MenuTagMap;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+ 
+    writerList: string[] = ['all'];
+    publisherList: string[] = ['all'];
+
+    myWriterControl = new FormControl();
+    myPublisherControl = new FormControl();
+
+    writerOptions: Writer[] = [
+        {id:1, name: 'all' }
+    ];
+    publisherOptions: Publisher[] = [
+        { id: 1, name: 'all' }
+    ];
+
+    filteredWriterOptions: Observable<Writer[]>;
+    filteredPublisherOptions: Observable<Publisher[]>;
+
+
+    constructor(private productService: ProductService, private route: ActivatedRoute) {
+
+        this.productService.getAllWriters()
+            .subscribe(
+                (writer: Writer[]) => {              
+                    for (var val of writer) {
+                        this.writerList.push(val.name);
+                        var obj = {}; // <---- Move declaration inside loop
+
+                        obj['id'] = val.id;
+                        obj['name'] = val.name;
+
+                        this.writerOptions.push({id:1, name: val.name});
+                    }
+                    console.log(this.writerList.length);
+                }
+            );
+
+ 
+
+
+        this.productService.getAllPublishers()
+            .subscribe(
+                (publisher: Publisher[]) => {
+
+                    for (var val of publisher) {
+                        this.publisherList.push(val.name);
+                        var obj = {}; // <---- Move declaration inside loop
+
+                        obj['id'] = val.id;
+                        obj['name'] = val.name;
+
+                        this.publisherOptions.push({ id: 1, name: val.name });
+                    }
+                    console.log(this.publisherList.length);
+                }
+            );
+
+
+
+
     this.route.params.subscribe(
       (params: Params) => {
             const category = params['category'];
@@ -56,7 +127,7 @@ export class ProductLeftSidebarComponent implements OnInit {
 
                                 this.productService.getAllSpecialSalesProduct(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
                                     this.allItems = products;
-                                    //this.products = products.slice(0.8);
+                                    this.products = products.slice(0.8);
                                     console.log(products);
 
                                 });
@@ -64,7 +135,7 @@ export class ProductLeftSidebarComponent implements OnInit {
                             else {
                                 this.productService.getProductByCategoryId(Number(this.menuTagMap[0].tagValue)).subscribe(products => {
                                     this.allItems = products;
-                                    // this.products = products.slice(0.8);
+                                     this.products = products.slice(0.8);
                                     console.log(products);
 
                                 });
@@ -75,7 +146,7 @@ export class ProductLeftSidebarComponent implements OnInit {
                         else if (this.menuTagMap[0].tagType == 'ProductTag-Condition-Old-Old') {
                             this.productService.getAllAttributeTagProduct('Condition-Old-Old-' + this.menuTagMap[0].tagValue).subscribe(products => {
                                 this.allItems = products;
-                                // this.products = products.slice(0.8);
+                                 this.products = products.slice(0.8);
                                 console.log('>>>>>ProductTag-Condition-Old-Old');
                                 console.log(products);
 
@@ -126,7 +197,13 @@ export class ProductLeftSidebarComponent implements OnInit {
             }
             else if (category.substr(0, 6) == 'search') {
                 console.log('search>>>>' + category.substr(6, category.length));
-                this.productService.getProductBySearch(category.substr(6, category.length)).subscribe(products => {
+                var searchtextarr = category.split('-');
+                console.log(searchtextarr);
+                if (searchtextarr[1] == 'করবী') {
+                    searchtextarr[1] = '';
+                }
+                console.log(searchtextarr[1]);
+                this.productService.getProductBySearch(searchtextarr[1] + '-' + searchtextarr[2]).subscribe(products => {
                     this.allItems = products;
                     this.products = products.slice(0.8);
                     console.log(products);
@@ -142,63 +219,6 @@ export class ProductLeftSidebarComponent implements OnInit {
                 });
 
             }
-
-
-
- 
-            //if (strlength === 4) {
-            //    this.productService.getProductByCategoryId(category).subscribe(products => {
-            //        this.allItems = products;
-            //        this.products = products.slice(0.8);
-            //        console.log('mmmmmm');
-            //        console.log(products);
-            //        //this.getTags(products)
-            //        //this.getColors(products)
-            //    })
-            //}
-            //else {
-            //switch (category) {
-            //    case '000000cat1':
-            //        this.productService.getProductByCategoryId('1001').subscribe(products => {
-            //            this.allItems = products;
-            //            this.products = products.slice(0.8);
-            //            console.log(products);
-            //            //this.getTags(products)
-            //            //this.getColors(products)
-            //        })
-            //        break;
-            //    case '000subcat':
-            //        let toArray = catid.split("-", 2);
-            //        this.productService.getProductBySubCategoryId(toArray[0], toArray[1]).subscribe(products => {
-            //            this.allItems = products;
-            //            this.products = products.slice(0.8);
-            //            console.log(products);
-            //            //this.getTags(products)
-            //            //this.getColors(products)
-            //        })
-            //        break;
-            //    case 'subsubcat':
-            //        this.productService.getProductByCategoryId(catid).subscribe(products => {
-            //            this.allItems = products;
-            //            this.products = products.slice(0.8);
-            //            console.log(products);
-            //            //this.getTags(products)
-            //            //this.getColors(products)
-            //        })
-            //        break;              
-            //   default:
-            //        //this.productService.getProductByCategoryId(1).subscribe(products => {
-            //        //    this.allItems = products;
-            //        //    this.products = products.slice(0.8);
-            //        //    console.log(products);
-            //        //    //this.getTags(products)
-            //        //    //this.getColors(products)
-            //        //})
-            //        break;
-            //}
-            //}
-   
-
 
       }
     )
@@ -242,10 +262,41 @@ export class ProductLeftSidebarComponent implements OnInit {
       this.colors = itemColor
    }
 
-  ngOnInit() {
-  }
+
+    ngOnInit() {
+        this.filteredWriterOptions = this.myWriterControl.valueChanges
+            .pipe(
+                startWith(''),
+                map(value => typeof value === 'string' ? value : value.name),
+                map(name => name ? this._writerFilter(name) : this.writerOptions.slice())
+        );
+
+        this.filteredPublisherOptions = this.myPublisherControl.valueChanges
+            .pipe(
+                startWith(''),
+                map(value => typeof value === 'string' ? value : value.name),
+                map(name => name ? this._publisherFilter(name) : this.publisherOptions.slice())
+        );
+
+        
+    }
 
 
+    writerDisplayFn(user: Writer): string {
+        return user && user.name ? user.name : '';
+    }
+    publisherDisplayFn(user: Publisher): string {
+        return user && user.name ? user.name : '';
+    }
+
+    private _writerFilter(name: string): Writer[] {
+        const filterValue = name.toLowerCase();
+        return this.writerOptions.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    }
+    private _publisherFilter(name: string): Publisher[] {
+        const filterValue = name.toLowerCase();
+        return this.publisherOptions.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+    }
 
   public changeViewType(viewType, viewCol){
     this.viewType = viewType;
@@ -331,12 +382,25 @@ public onPageChanged(event){
 
 onBrendsChanged(newBrend) {
   console.log(newBrend);
-  this.allItems = newBrend === 'all' ? this.products : this.products.filter(
-
-    item => item.brand === newBrend
+  this.allItems = newBrend === 'all' ? this.products : this.products.filter(      
+      item => 
+          item.brand === newBrend      
   )
   console.log(this.allItems);
-
-
 }
+
+onProducerChanged(newProducer) {
+        console.log(newProducer);
+        this.allItems = newProducer === 'all' ? this.products : this.products.filter(
+            item =>
+                item.producer === newProducer
+        )
+        console.log(this.allItems);
+}
+
+
+
+    
+
+
 }
